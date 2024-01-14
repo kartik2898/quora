@@ -1,0 +1,84 @@
+.login-Layout{
+    background-image: url('../Assets/bgimg.webp');
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.login-container-wrapper{
+    background-color: white;
+    margin: 0rem 12rem;
+}
+.login-logo-container img{
+    padding: 5px;
+}
+.form-container-wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+.login-form-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+.frgt-lgn-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.signUp-email-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
+    padding: 0.5rem;
+    /* row-gap: 0.5rem;
+    justify-content:flex-end;
+    text-align: center; */
+
+}
+
+.TermsAndCondition{
+    color: grey;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+    width: 16rem;
+    margin: 1rem 0;
+}
+
+
+
+.gImg{
+    height: 40px;
+    width: 40px;
+}
+.btn-signUp{
+    text-transform: lowercase;
+    width: 290px;
+    border-radius: 50%;
+}
+.language{
+    align-items: center;
+    border-bottom: 1px solid #dee0e1;
+    border-top: 1px solid #dee0e1;
+    display: flex;
+    font-size: 13px;
+    gap: 20px;
+    justify-content: center;
+    padding: 15px;
+}
