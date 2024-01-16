@@ -1,7 +1,8 @@
 
 .footer-list{
     display: flex;
-    padding: 0 2rem;
+    padding: 0px !important;
     background-color: rgb(244, 244, 244);
     font-size: x-small;
 }
+

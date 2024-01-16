@@ -1,0 +1,22 @@
+
+
+.Sign-Up-Modal{
+    position: fixed !important;
+    height: 40rem;
+    width: 40rem;
+    background-color: rgb(54, 65, 212);
+}
+
+
+.signUp-form{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 2rem;
+    row-gap: 1rem;
+}
+
+.Next{
+    text-align:end;
+    padding: 4rem 2rem 1rem 0rem;
+}

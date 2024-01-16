@@ -20,23 +20,37 @@ function LoginPage(){
                 <Box className="login-container-wrapper">
                     <Box className="login-logo-container">
                         <img src={logo}></img>
-                        <Typography variant="h6">A place to share knowledge and better understand the world</Typography>
+                        <Typography variant="h6" fontSize={15}>A place to share knowledge and better understand the world</Typography>
                     </Box>
                     <Box className="form-container-wrapper">
                         <Box className="login-form-container">
-                            <p><b>Login</b></p>
-                            <TextField id="outlined-basic" placeholder="Your email" size="small" variant="outlined" />
-                            
-                            <TextField
-                                id="outlined-password-input"
-                                type="password"
-                                size="small"
-                                autoComplete="current-password"
-                                placeholder="Your password"
-                            />
+                            <Box className="login-heading">
+                                <p><b>Login</b></p>
+                            </Box>
+                            <Box className="email">
+                                <label>Email</label>
+                                <br></br>
+                                <TextField 
+                                    id="outlined-basic"
+                                    placeholder="Your email" 
+                                    size="small" 
+                                    variant="outlined" 
+                                />
+                            </Box>
+                            <Box className="password">
+                                <label>Password</label>
+                                <br/>
+                                <TextField
+                                    id="outlined-password-input"
+                                    type="password"
+                                    size="small"
+                                    autoComplete="current-password"
+                                    placeholder="Your password"
+                                />
+                            </Box>
                            
                             <Box className="frgt-lgn-btn">
-                                <Link>Forgot Password?</Link>
+                                <Link href="javascript: void(0)">Forgot Password?</Link>
                                 <Button variant="contained"size="small">Login</Button>
                             </Box>
                         </Box>
@@ -57,10 +71,11 @@ function LoginPage(){
                         </Box>
                     </Box>
                     <Box className="language">
-                        <Link href="#" sx={{fontSize:20}}>हिन्दी <ArrowForwardIosIcon fontSize="small"/></Link>
-                        <Link href="#" sx={{fontSize:20}}>मराठी <ArrowForwardIosIcon fontSize="small"/></Link>
+                        <Link href="javascript: void(0)" sx={{fontSize:15}}>हिन्दी <ArrowForwardIosIcon fontSize="extra small"/></Link>
+                        <Link href="javascript: void(0)" sx={{fontSize:15}}>मराठी <ArrowForwardIosIcon fontSize="extra small"/></Link>
                     </Box>
                     <Footer/>
+                   
                 </Box>
             </Container>
         </>
@@ -68,3 +83,5 @@ function LoginPage(){
 }
 
 export default LoginPage
+
+// javascript void(0)
