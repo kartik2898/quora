@@ -8,18 +8,16 @@ const info = ["About","Careers"," Privacy","Terms","Contact","Languages","Your A
 function Footer(){
     return(
         <Box className="footer-container">
-            <List className="footer-list">
+            
                 {info.map((e,i)=>(
-                    <ListItem key={i} className="footer-list-item">
-                        <Link href="">{e}</Link>
-                    </ListItem>
+                    <>
+                    <Link href="" key={i}>{e}</Link>
+                    </>
                 ))
                 }
-                <ListItem>
+                <Link>
                     © Quora, Inc. 2024
-                </ListItem>
-                
-            </List>
+                </Link> 
         </Box>
     )
 }

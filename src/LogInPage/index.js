@@ -1,4 +1,5 @@
-import {Container, Box, Typography } from "@mui/material"
+import React,{useState} from "react";
+import {Container, Box, Typography,Modal } from "@mui/material"
 import bgImg from "../Assets/bgimg.webp"
 import logo from "../Assets/quora-logo.png"
 import TextField from '@mui/material/TextField';
@@ -11,9 +12,15 @@ import Divider from '@mui/material/Divider';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './login.css'
 import Footer from "../Components/Footer/index.js"
+import SignUpModal from "../Components/Modal/index.js";
 
 
 function LoginPage(){
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return(
         <>
             <Container className="login-Layout">
@@ -29,7 +36,7 @@ function LoginPage(){
                             </Box>
                             <Box className="email">
                                 <label>Email</label>
-                                <br></br>
+                                <br/>
                                 <TextField 
                                     id="outlined-basic"
                                     placeholder="Your email" 
@@ -51,7 +58,8 @@ function LoginPage(){
                            
                             <Box className="frgt-lgn-btn">
                                 <Link href="javascript: void(0)">Forgot Password?</Link>
-                                <Button variant="contained"size="small">Login</Button>
+                                
+                                <Button variant="contained" sx={{borderRadius:50,backgroundColor:"#96B4FF"}}>Next</Button>
                             </Box>
                         </Box>
                         <Divider orientation="vertical" flexItem />
@@ -66,8 +74,8 @@ function LoginPage(){
                             <Button variant="outlined"sx={{ width: 290 }} startIcon={<img className="gImg" src={facbookI}/>}>
                                 Continue with Facebook
                             </Button>
-                           
-                            <Button variant="text" className="btn-signUp">Sign up with mail</Button>
+
+                            <Button variant="text" className="btn-signUp" onClick={handleOpen}>Sign up with mail</Button>
                         </Box>
                     </Box>
                     <Box className="language">
@@ -75,6 +83,16 @@ function LoginPage(){
                         <Link href="javascript: void(0)" sx={{fontSize:15}}>मराठी <ArrowForwardIosIcon fontSize="extra small"/></Link>
                     </Box>
                     <Footer/>
+                    <div>
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <SignUpModal handleClose={handleClose}/>
+                        </Modal>
+                    </div>
                    
                 </Box>
             </Container>
@@ -83,5 +101,3 @@ function LoginPage(){
 }
 
 export default LoginPage
-
-// javascript void(0)
