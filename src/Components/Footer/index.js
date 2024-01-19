@@ -11,11 +11,11 @@ function Footer(){
             
                 {info.map((e,i)=>(
                     <>
-                    <Link href="" key={i}>{e}</Link>
+                    <Link href="" key={i} sx={{color:"black",textDecorationLine:"none"}}>{e}</Link><span className="dot">·</span>
                     </>
                 ))
                 }
-                <Link>
+                <Link sx={{color:"black",textDecorationLine:"none"}}>
                     © Quora, Inc. 2024
                 </Link> 
         </Box>

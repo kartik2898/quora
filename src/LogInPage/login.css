@@ -2,7 +2,7 @@
     background-image: url('../Assets/bgimg.webp');
     height: 100vh !important;
     margin: 0px !important;
-    padding: 0px !important;
+    padding-top: 0 !important;
     max-width: 100vw !important;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,11 +16,16 @@
 .login-container-wrapper{
     background-color: white;
     border-radius: 2px;
+    padding-top: 10px;
     /* margin: 0rem 12rem; */
 }
 .login-logo-container img{
-    padding: 30px 10px 5px 10px !important;
-    width: 135px;
+    padding: 30px 10px 10px 10px !important;
+    width: 170px;
+}
+.main-heading{
+    font-weight: bold !important;
+    color: #636466;
 }
 .form-container-wrapper{
     display: flex;
@@ -35,13 +40,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
 }
 .frgt-lgn-btn{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 2rem;
 }
@@ -50,13 +54,8 @@
     flex-direction: column;
     width: 50%;
     justify-content: center;
-    align-items: center;
     row-gap: 0.5rem;
     padding: 0.5rem 2rem;
-    /* row-gap: 0.5rem;
-    justify-content:flex-end;
-    text-align: center; */
-
 }
 
 .TermsAndCondition{
@@ -71,24 +70,43 @@
 
 
 .gImg{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
 }
 .btn-signUp{
-    text-transform: lowercase;
+    color: #636466 !important;
     width: 290px;
-    border-radius: 50%;
+    border-radius: 50px !important;
+}
+.btn-signUp span{
+    text-transform: lowercase !important;
+    
 }
 .login-heading{
     text-align: left;
     border-bottom: 1px solid #e2dede;
-    width: 230px;
+    width: 275px;
+    font-weight: 500;
+    color: #282829;
 }
+
 .email{
+    display: flex;
+    flex-direction: column;
     text-align: left;
+    font-weight: bold;
+    color: #282829;
+    font-size: 13px;
+    gap: 0.4rem;
 }
 .password{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
     text-align: left;
+    font-weight: bold;
+    color: #282829;
+    font-size: 13px;
 }
 .language{
     align-items: center;

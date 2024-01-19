@@ -1,8 +1,13 @@
 
-.footer-list{
+.footer-container{
     display: flex;
-    padding: 0px !important;
     background-color: rgb(244, 244, 244);
     font-size: x-small;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 2px 2px;
+    gap: 0.3rem;
+    padding: 16px;
+    font-size: 13px;
 }
 

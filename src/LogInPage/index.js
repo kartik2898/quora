@@ -1,9 +1,7 @@
 import React,{useState} from "react";
 import {Container, Box, Typography,Modal } from "@mui/material"
-import bgImg from "../Assets/bgimg.webp"
 import logo from "../Assets/quora-logo.png"
 import TextField from '@mui/material/TextField';
-import Input from '@mui/material/Input';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import gI from '../Assets/googleImg.png'
@@ -13,6 +11,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './login.css'
 import Footer from "../Components/Footer/index.js"
 import SignUpModal from "../Components/Modal/index.js";
+
+
+
 
 
 function LoginPage(){
@@ -27,39 +28,41 @@ function LoginPage(){
                 <Box className="login-container-wrapper">
                     <Box className="login-logo-container">
                         <img src={logo}></img>
-                        <Typography variant="h6" fontSize={15}>A place to share knowledge and better understand the world</Typography>
+                        <Typography variant="h6" fontSize={15} className="main-heading" >A place to share knowledge and better understand the world</Typography>
                     </Box>
                     <Box className="form-container-wrapper">
                         <Box className="login-form-container">
                             <Box className="login-heading">
-                                <p><b>Login</b></p>
+                                <p>Login</p>
                             </Box>
                             <Box className="email">
                                 <label>Email</label>
-                                <br/>
                                 <TextField 
                                     id="outlined-basic"
                                     placeholder="Your email" 
-                                    size="small" 
-                                    variant="outlined" 
+                                    size="small"
+                                    fullWidth
+                                    variant="outlined"
+                                     
                                 />
                             </Box>
                             <Box className="password">
                                 <label>Password</label>
-                                <br/>
                                 <TextField
+                                    fullWidth
                                     id="outlined-password-input"
                                     type="password"
                                     size="small"
                                     autoComplete="current-password"
                                     placeholder="Your password"
+                                    
                                 />
                             </Box>
                            
                             <Box className="frgt-lgn-btn">
                                 <Link href="javascript: void(0)">Forgot Password?</Link>
                                 
-                                <Button variant="contained" sx={{borderRadius:50,backgroundColor:"#96B4FF"}}>Next</Button>
+                                <Button variant="contained" sx={{borderRadius:50,backgroundColor:"#96B4FF"}}>Login</Button>
                             </Box>
                         </Box>
                         <Divider orientation="vertical" flexItem />
@@ -71,11 +74,12 @@ function LoginPage(){
                             <Button variant="outlined"sx={{ width: 290 }} startIcon={<img className="gImg" src={gI}/>}>
                                 Continue with Google
                             </Button>
-                            <Button variant="outlined"sx={{ width: 290 }} startIcon={<img className="gImg" src={facbookI}/>}>
+                            <Button  variant="outlined"sx={{ width: 290 }} startIcon={<img className="gImg" src={facbookI}/>}>
                                 Continue with Facebook
                             </Button>
 
-                            <Button variant="text" className="btn-signUp" onClick={handleOpen}>Sign up with mail</Button>
+                            <Button variant="text" className="btn-signUp" onClick={handleOpen}>S<span>ign up with email</span>
+                            </Button>
                         </Box>
                     </Box>
                     <Box className="language">
