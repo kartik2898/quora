@@ -24,9 +24,9 @@ function SignUpModal({handleClose}){
             email: '',
         },
         validationSchema: validationSignUpSchema,
-        onsubmit: {
-
-        }
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2));
+        },
 
     })
 
@@ -69,7 +69,14 @@ function SignUpModal({handleClose}){
                 </Box>
             </Box>
             <Box class="Next">
-                <Button variant="contained" sx={{borderRadius:50,backgroundColor:"#96B4FF"}}>Next</Button>
+                <Button 
+                    variant="contained" 
+                    sx={{borderRadius:50,backgroundColor:"#96B4FF"}}
+                    type="button"
+                    onClick={formik.handleSubmit}
+                >
+                    Next
+                </Button>
             </Box>
         </Box>
     )

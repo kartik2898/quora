@@ -11,16 +11,34 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './login.css'
 import Footer from "../Components/Footer/index.js"
 import SignUpModal from "../Components/Modal/index.js";
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 
 
-
+const validationLoginSchema = yup.object({
+    email:yup.string().email("The email address you entered is not valid.").required("email is required"),
+    password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
+});
 
 function LoginPage(){
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: validationLoginSchema,
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2));
+        },
+
+    })
 
     return(
         <>
@@ -43,7 +61,12 @@ function LoginPage(){
                                     size="small"
                                     fullWidth
                                     variant="outlined"
-                                     
+                                    name="email"
+                                    value={formik.values.email}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    error={formik.touched.email && Boolean(formik.errors.email)}
+                                    helperText={formik.touched.email && formik.errors.email}      
                                 />
                             </Box>
                             <Box className="password">
@@ -55,14 +78,25 @@ function LoginPage(){
                                     size="small"
                                     autoComplete="current-password"
                                     placeholder="Your password"
-                                    
+                                    name="password"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    error={formik.touched.password && Boolean(formik.errors.password)}
+                                    helperText={formik.touched.password && formik.errors.password}
                                 />
                             </Box>
                            
                             <Box className="frgt-lgn-btn">
                                 <Link href="javascript: void(0)">Forgot Password?</Link>
                                 
-                                <Button variant="contained" sx={{borderRadius:50,backgroundColor:"#96B4FF"}}>Login</Button>
+                                <Button variant="contained" 
+                                    sx={{borderRadius:50,backgroundColor:"#96B4FF"}} 
+                                    type="button"
+                                    onClick={formik.handleSubmit}
+                                > 
+                                    Login
+                                </Button>
                             </Box>
                         </Box>
                         <Divider orientation="vertical" flexItem />
