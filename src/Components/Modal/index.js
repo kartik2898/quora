@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-
+import AuthService from "../../service/AuthService";
 
 const validationSignUpSchema = yup.object({
         name:yup.string().trim().min(2,"Your name needs to be at least 2 characters long.").required("name is required"),
@@ -17,8 +17,6 @@ const validationSignUpSchema = yup.object({
 
 
 function SignUpModal({handleClose}){
-
-
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -27,10 +25,16 @@ function SignUpModal({handleClose}){
         },
         validationSchema: validationSignUpSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            handleSignUp(values);
+            
         },
-
     })
+
+    const handleSignUp = (values) => {
+        AuthService.signUp(values.name, values.email, values.password).then((res) => {
+            console.log(res)
+        })
+    }
 
     return(
         <Box class="Sign-Up-Modal">

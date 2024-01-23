@@ -17,7 +17,6 @@ import { toast } from "react-toastify";
 import AuthService from "../service/AuthService.js";
 
 
-
 const validationLoginSchema = yup.object({
     email:yup.string().email("The email address you entered is not valid.").required("email is required"),
     password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
@@ -28,7 +27,6 @@ function LoginPage(){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
 
     const formik = useFormik({
         initialValues: {
@@ -41,7 +39,6 @@ function LoginPage(){
             handleLogin(values)
         },
     })
-
 
     const handleLogin = (values) => {
         AuthService.login(values.email, values.password).then((res) => {
@@ -151,5 +148,4 @@ function LoginPage(){
         </>
     )
 }
-
 export default LoginPage

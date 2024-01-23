@@ -12,9 +12,8 @@ function App() {
       <ToastContainer />
       <div className="App">
         <Routes>
-          <Route path='/' Component={<LoginPage/>}/>
+          <Route path='/' element={<LoginPage/>}/>
         </Routes>
-       
       </div>
     </>
   );
