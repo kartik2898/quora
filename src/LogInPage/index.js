@@ -13,6 +13,8 @@ import Footer from "../Components/Footer/index.js"
 import SignUpModal from "../Components/Modal/index.js";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { toast } from "react-toastify";
+import AuthService from "../service/AuthService.js";
 
 
 
@@ -36,9 +38,21 @@ function LoginPage(){
         validationSchema: validationLoginSchema,
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
+            handleLogin(values)
         },
-
     })
+
+
+    const handleLogin = (values) => {
+        AuthService.login(values.email, values.password).then((res) => {
+            localStorage.setItem('token', res?.data?.token)
+            setTimeout(() => {
+                // use navigate hook
+                // navigator('/home')
+            }, 100);
+        })
+    }
+
 
     return(
         <>

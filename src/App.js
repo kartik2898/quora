@@ -2,15 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import LoginPage from './LogInPage/index.js';
 import Header from './Components/Header/index.js';
-import SignUpModal from './Components/Modal/index.js';
+import 'react-toastify/dist/ReactToastify.css';
+import { Routes,Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <div className="App">
-     <LoginPage/>
-      {/* <Header/> */}
-      {/* <SignUpModal/> */}
-    </div>
+    <>
+      <ToastContainer />
+      <div className="App">
+        <Routes>
+          <Route path='/' Component={<LoginPage/>}/>
+        </Routes>
+       
+      </div>
+    </>
   );
 }
 

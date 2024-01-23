@@ -10,7 +10,8 @@ import * as yup from 'yup';
 
 const validationSignUpSchema = yup.object({
         name:yup.string().trim().min(2,"Your name needs to be at least 2 characters long.").required("name is required"),
-        email:yup.string().email("The email address you entered is not valid.").required("email is required")
+        email:yup.string().email("The email address you entered is not valid.").required("email is required"),
+        password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
 });
 
 
@@ -22,6 +23,7 @@ function SignUpModal({handleClose}){
         initialValues: {
             name: '',
             email: '',
+            password:'',
         },
         validationSchema: validationSignUpSchema,
         onSubmit: (values) => {
@@ -65,6 +67,24 @@ function SignUpModal({handleClose}){
                         onBlur={formik.handleBlur}
                         error={formik.touched.email && Boolean(formik.errors.email)}
                         helperText={formik.touched.email && formik.errors.email}
+                    />
+                </Box>
+                <Box>
+                    <label>Password</label>
+                    <TextField
+                        fullWidth
+                        id="outlined-password-input"
+                        type="password"
+                        sx={{mt:0.5}}
+                        size="small"
+                        autoComplete="current-password"
+                        placeholder="Set your password"
+                        name="password"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        error={formik.touched.password && Boolean(formik.errors.password)}
+                        helperText={formik.touched.password && formik.errors.password}
                     />
                 </Box>
             </Box>
