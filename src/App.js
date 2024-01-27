@@ -6,14 +6,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Routes,Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+
 function App() {
   return (
     <>
       <ToastContainer />
       <div className="App">
-        <Routes>
+        {/* <Routes>
           <Route path='/' element={<LoginPage/>}/>
-        </Routes>
+        </Routes> */}
+        <Header/>
       </div>
     </>
   );

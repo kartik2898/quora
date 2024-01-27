@@ -1,0 +1,42 @@
+
+.header-Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header-logo{
+    width: 8rem;
+    height: 1.8rem;
+}
+.css-1t4lqmc-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: rgb(185,43,39) !important;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+    background-color: white !important;
+}
+.css-1aquho2-MuiTabs-indicator{
+    background-color:rgb(185,43,39) !important;
+}
+
+.try-quora-btn {
+    border-radius: 20px !important;
+    color: gray !important;
+    border: 1px solid gray !important;
+   
+}
+
+.try-quora-btn:hover{
+    background-color: rgb(241, 241, 241) !important;
+}
+.try-quora-btn span{
+    text-transform: lowercase !important;
+}
+.Add-qus-btn{
+    border-radius: 20px !important;
+    background-color: rgb(185,43,39) !important;
+   
+}
+.Add-qus-btn span{
+    text-transform: lowercase !important;
+}
