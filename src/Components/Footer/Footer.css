@@ -9,5 +9,6 @@
     gap: 0.3rem;
     padding: 16px;
     font-size: 13px;
+    flex-wrap: wrap;
 }
 

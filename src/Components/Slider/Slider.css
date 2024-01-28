@@ -1,0 +1,26 @@
+
+.css-1kp57pa-MuiDrawer-docked .MuiDrawer-paper {
+    background-color: #F1F2F2 !important;
+}
+.Create-space{
+    display: flex;
+    justify-content: center;
+}
+
+.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
+    column-gap: 15px;
+}
+
+.list-item-icon{
+    justify-content: flex-end;
+}
+.list-item-icon img{
+    height: 20px;
+    width: 20px;
+}
+.footer-container{
+    display: flex;
+    padding-left: 25px;
+    justify-content: flex-start;
+    background-color: #F1F2F2 !important;
+}

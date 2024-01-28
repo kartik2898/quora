@@ -19,6 +19,6 @@ function Footer(){
                     © Quora, Inc. 2024
                 </Link> 
         </Box>
-    )
-}
+    );
+};
 export default Footer
