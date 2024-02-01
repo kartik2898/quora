@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import LoginPage from './LogInPage/index.js';
-import Header from './Components/Header/index.js';
+import LoginPage from './Pages/LogInPage/index.js';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes,Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -13,16 +12,11 @@ function App() {
     <>
       <ToastContainer />
       <div className="App">
-        {/* <Routes>
+        <Routes>
           <Route path='/' element={<LoginPage/>}/>
-        </Routes> */}
-        {/* <Header/>  */}
-        {/* <SideBar/> */}
-
-        {/* <Cards/> */}
-
-        <Home/>
-
+          <Route path='/Home' element={<Home/>}/>
+        </Routes>
+        {/* <Home/> */}
       </div>
     </>
   );

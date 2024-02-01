@@ -1,20 +1,20 @@
 import React,{useState} from "react";
 import {Container, Box, Typography,Modal } from "@mui/material"
-import logo from "../Assets/quora-logo.png"
+import logo from "../../Assets/quora-logo.png"
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-import gI from '../Assets/googleImg.png'
-import facbookI from '../Assets/Facebook-f_Logo-Blue-Logo.wine.svg'
+import gI from '../../Assets/googleImg.png'
+import facbookI from '../../Assets/Facebook-f_Logo-Blue-Logo.wine.svg'
 import Divider from '@mui/material/Divider';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './login.css'
-import Footer from "../Components/Footer/index.js"
-import SignUpModal from "../Components/Modal/index.js";
+import Footer from "../../Components/Footer/index.js"
+import SignUpModal from "../../Components/Modal/index.js";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { toast } from "react-toastify";
-import AuthService from "../service/AuthService.js";
+import AuthService from "../../service/AuthService.js";
 
 
 const validationLoginSchema = yup.object({

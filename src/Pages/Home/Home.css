@@ -12,6 +12,7 @@
 .header-container{
     position: fixed !important;
     z-index: 1;
+    padding: 0 !important;
     
 }
 .QNA-Container{
