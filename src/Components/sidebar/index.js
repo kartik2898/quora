@@ -17,11 +17,10 @@ import fashion from '../../Assets/fashion and style.jpeg'
 import book from '../../Assets/book.jpeg'
 import tech from '../../Assets/Technology.jpeg'
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import './Slider.css';
+import './Sidebar.css';
 import Footer from '../Footer';
-import { width } from '@mui/system';
  
-function Slider(){
+function SideBar(){
     const drawerWidth = 240;
 
     const createSpaceData = [
@@ -59,46 +58,26 @@ function Slider(){
         },
     ]
     return(
-        <Box sx={{ display: 'flex'}}>
-            <Drawer
-                sx={{
-                width: drawerWidth,
-                flexShrink: 0,
-                '& .MuiDrawer-paper': {
-                    width: drawerWidth,
-                    boxSizing: 'border-box',
-                },
-                
-                }}
-                variant="permanent"
-                anchor="left"
-            >
-                <Toolbar />
-                <box className="Create-space">
-                    <AddRoundedIcon />
-                    <Typography>Create space</Typography>
-                </box>
-                <Divider />
-                <List>
-                {createSpaceData.map((text, index) => (
-                    <ListItem key={text.name} disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon className='list-item-icon'>
-                            <img src={text.img}/>
-                        </ListItemIcon>
-                        <ListItemText primary={text.name} />
-                    </ListItemButton>
-                    </ListItem>
-                ))}
-                </List>
-                <Divider/>
-                <Box className="footer-container">
-                    <Footer/>
-                </Box>
-                
-            </Drawer> 
+        <Box sx={{ display: 'flex',flexDirection: "column"}} className="sidebarcontainer">   
+            <box className="Create-space">
+                <AddRoundedIcon />
+                <Typography>Create space</Typography>
+            </box>
+            <Divider />
+            <List className='topics'>
+            {createSpaceData.map((text, index) => (
+                <ListItem key={text.name} disablePadding>
+                <ListItemButton>
+                    <ListItemIcon className='list-item-icon'>
+                        <img src={text.img}/>
+                    </ListItemIcon>
+                    <ListItemText primary={text.name} />
+                </ListItemButton>
+                </ListItem>
+            ))}
+            </List>    
         </Box>
     );
 };
 
-export default Slider
+export default SideBar

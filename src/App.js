@@ -5,7 +5,7 @@ import Header from './Components/Header/index.js';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes,Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Slider from './Components/Slider/index.js';
+import Home from './Pages/Home/index.js';
 
 
 function App() {
@@ -16,8 +16,12 @@ function App() {
         {/* <Routes>
           <Route path='/' element={<LoginPage/>}/>
         </Routes> */}
-        <Header/>
-        <Slider/>
+        {/* <Header/>  */}
+        {/* <SideBar/> */}
+
+        {/* <Cards/> */}
+
+        <Home/>
 
       </div>
     </>

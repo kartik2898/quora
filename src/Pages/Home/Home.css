@@ -1,0 +1,63 @@
+.home-container{
+    max-width: 100% !important;
+    padding: 0 !important;
+    background-color: #f1f2f2;
+}
+.home-Product-container{
+    margin: 0 !important;
+}
+.css-19r6kue-MuiContainer-root{
+    padding: 0 !important;
+}
+.header-container{
+    position: fixed !important;
+    z-index: 1;
+    
+}
+.QNA-Container{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.QNA-Share{
+    border-radius: 1px solid rgb(246,246,247) ;
+    background-color: rgb(246,246,247);
+    padding: 0.5rem 0;
+    border-radius: 35px;
+    color: rgb(149,150,153);
+    width: 100%;
+}
+.sidebar-container{
+    height: 100vh ;
+    padding-top: 1rem !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 5rem;
+}
+.sidebar-footer-container{
+    /* padding-left: 4rem; */
+    margin-left: 4rem;
+    border-top: 1px solid rgb(212,213,213);
+}
+.product-card-container{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.QNA-option-container{
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 0.3rem;
+}
+.Qna-option-div{
+    display: flex;
+    height: 1.9rem !important;
+}
+.Adv-Container{
+    margin-top: 5rem;
+}

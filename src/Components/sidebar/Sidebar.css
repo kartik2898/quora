@@ -1,10 +1,14 @@
 
-.css-1kp57pa-MuiDrawer-docked .MuiDrawer-paper {
-    background-color: #F1F2F2 !important;
+.sidebarcontainer{
+    padding-left: 3rem !important;
 }
 .Create-space{
     display: flex;
     justify-content: center;
+}
+
+.css-1f2xuhi-MuiDrawer-docked .MuiDrawer-paper{
+    background-color: #F1F2F2;
 }
 
 .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{

@@ -3,11 +3,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.logo-image-container{
+    padding-right: 2rem;
 }
 
 .Header-logo{
     width: 8rem;
-    height: 1.8rem;
+    height: 1.7rem;
+}
+.css-1t4lqmc-MuiButtonBase-root-MuiTab-root{
+    min-width: 50px !important;
+    padding: 12px 10px !important;
 }
 .css-1t4lqmc-MuiButtonBase-root-MuiTab-root.Mui-selected{
     color: rgb(185,43,39) !important;
@@ -19,6 +28,9 @@
     background-color:rgb(185,43,39) !important;
 }
 
+.css-1y0e51l-MuiInputBase-root{
+    font-size: 1.2rem !important;
+}
 .try-quora-btn {
     border-radius: 20px !important;
     color: gray !important;

@@ -78,9 +78,11 @@
     width: 290px;
     border-radius: 50px !important;
 }
+.btn-signUp:hover{
+    background-color: #f7f7f7 !important;
+}
 .btn-signUp span{
-    text-transform: lowercase !important;
-    
+    text-transform: lowercase !important; 
 }
 .login-heading{
     text-align: left;
