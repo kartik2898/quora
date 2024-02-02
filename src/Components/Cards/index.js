@@ -11,37 +11,34 @@ import { red } from '@mui/material/colors';
 import "./Cards.css"
 
 
-function Cards(){
+function Cards({question,name,pfImg,content,psImg,time}){
     return(
         <Card >
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      <img src=''/>
+                      <img src={pfImg}/>
                     </Avatar>
                 }
-                
                 action={
                     <IconButton aria-label="close">
                       <CloseRoundedIcon />
                     </IconButton>
                 }
-                title="kartik"
-                subheader="September 14, 2016"
+                title={name}
+                subheader={time}
             />
             <Box sx={{textAlign:"left", padding:"0.5rem 0 0.5rem 1rem" , fontWeight:500}}>
-                what is life?
+                what is life?{question}
             </Box>
             <CardMedia
                 component="img"
                 height="194"
-                image="/static/images/cards/paella.jpg"
+                image={psImg}
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    {content}
                 </Typography>
             </CardContent>
             <Box>

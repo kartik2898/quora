@@ -13,11 +13,27 @@ import Divider from '@mui/material/Divider';
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { RxPencil1 } from "react-icons/rx";
-
+import { useEffect, useState } from "react";
+import postService from "../../service/PostService";
+import { json } from "react-router-dom";
 
 
 
 function Home(){
+    const {page,setPage} = useState(0);
+    const {feeds,setFeeds} = useState([]);
+
+    useEffect(()=>{
+        getFeeds();
+    },[])
+
+    const getFeeds =()=>{
+        postService.getFeeds(page).then((res)=>{
+            setFeeds(res.data.data);
+        });
+        
+    }
+
     return(
         <Container sx={{ flexGrow: 1 }} className="home-container">
             <Grid container spacing={2} className="home-Product-container">
@@ -49,7 +65,21 @@ function Home(){
                             <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>}>P<span>ost</span></Button>
                         </Box>
                     </Card>
-                    <Cards/>
+                    {/* {
+                        feeds.map(feed=>(
+                            <Cards 
+                                question={feed.title} 
+                                name={feed.author.name}
+                                pfImg ={feed.author.profileImage}
+                                content={feed.content}
+                                psImg ={feed.images}
+                                time ={feed.createdAt}
+                                key={feed.__id}
+                            />
+                        ))
+                        
+                    } */}
+                    
                 </Grid>
                 <Grid xs={3.5} className="Adv-Container"> Adevertisement </Grid>
             </Grid>
