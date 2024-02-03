@@ -10,9 +10,10 @@ function Footer(){
         <Box className="footer-container">
             
                 {info.map((e,i)=>(
-                    <>
-                    <Link href="" key={i} sx={{color:"black",textDecorationLine:"none"}}>{e}</Link><span className="dot">·</span>
-                    </>
+                    <div key={i}>
+                        <Link href="" sx={{color:"black",textDecorationLine:"none"}}>{e}</Link><span className="dot">·</span>
+                    </div>
+                   
                 ))
                 }
                 <Link sx={{color:"black",textDecorationLine:"none"}}>

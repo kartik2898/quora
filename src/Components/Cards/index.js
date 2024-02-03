@@ -29,12 +29,12 @@ function Cards({question,name,pfImg,content,psImg,time}){
                 subheader={time}
             />
             <Box sx={{textAlign:"left", padding:"0.5rem 0 0.5rem 1rem" , fontWeight:500}}>
-                what is life?{question}
+                {question}
             </Box>
             <CardMedia
                 component="img"
-                height="194"
-                image={psImg}
+                height="auto"
+                image={psImg[0]}
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
@@ -42,7 +42,7 @@ function Cards({question,name,pfImg,content,psImg,time}){
                 </Typography>
             </CardContent>
             <Box>
-                <IconButton>..we fill later...</IconButton>
+                <IconButton></IconButton>
             </Box>
         </Card>
     )

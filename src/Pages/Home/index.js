@@ -1,4 +1,4 @@
-import { Container,Box } from "@mui/material";
+import { Container,Box,Modal } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import Header from "../../Components/Header";
 import SideBar from "../../Components/sidebar";
@@ -16,12 +16,20 @@ import { RxPencil1 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import postService from "../../service/PostService";
 import { json } from "react-router-dom";
+import PostModal from "../../Components/Modal/postModal.js";
 
 
 
 function Home(){
-    const {page,setPage} = useState(0);
-    const {feeds,setFeeds} = useState([]);
+
+
+
+    const [page,setPage] = useState(0);
+    const [feeds,setFeeds] = useState([]);
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     useEffect(()=>{
         getFeeds();
@@ -53,7 +61,7 @@ function Home(){
                                 <img src=''/>
                               
                             </Avatar>
-                            <Box className="QNA-Share">
+                            <Box className="QNA-Share" onClick={handleOpen}>
                                 What do you want to ask or share?
                             </Box>
                         </Box>
@@ -65,8 +73,8 @@ function Home(){
                             <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>}>P<span>ost</span></Button>
                         </Box>
                     </Card>
-                    {/* {
-                        feeds.map(feed=>(
+                    {
+                        feeds.map((feed,key)=>(
                             <Cards 
                                 question={feed.title} 
                                 name={feed.author.name}
@@ -74,15 +82,21 @@ function Home(){
                                 content={feed.content}
                                 psImg ={feed.images}
                                 time ={feed.createdAt}
-                                key={feed.__id}
+                                key={key}
                             />
-                        ))
-                        
-                    } */}
-                    
+                        ))  
+                    }
                 </Grid>
-                <Grid xs={3.5} className="Adv-Container"> Adevertisement </Grid>
+                <Grid xs={3.5} className="Adv-Container"> Advertisement </Grid>
             </Grid>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <PostModal handleClose={handleClose}/>
+            </Modal>
         </Container>
     )
 }

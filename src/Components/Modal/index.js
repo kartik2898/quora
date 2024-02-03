@@ -37,11 +37,11 @@ function SignUpModal({handleClose}){
     }
 
     return(
-        <Box class="Sign-Up-Modal">
+        <Box className="Sign-Up-Modal">
             <IconButton onClick={handleClose} sx={{m:0.5}}>
                 <CloseRoundedIcon />
             </IconButton>
-            <Box class="signUp-form">
+            <Box className="signUp-form">
                 <h3>Sign up</h3>
                 <Box>
                     <label htmlFor="name">Name</label>
@@ -92,7 +92,7 @@ function SignUpModal({handleClose}){
                     />
                 </Box>
             </Box>
-            <Box class="Next">
+            <Box className="Next">
                 <Button 
                     variant="contained" 
                     sx={{borderRadius:50,backgroundColor:"#96B4FF"}}

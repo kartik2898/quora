@@ -1,6 +1,4 @@
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -18,10 +16,8 @@ import book from '../../Assets/book.jpeg'
 import tech from '../../Assets/Technology.jpeg'
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import './Sidebar.css';
-import Footer from '../Footer';
  
 function SideBar(){
-    const drawerWidth = 240;
 
     const createSpaceData = [
         {
@@ -59,19 +55,19 @@ function SideBar(){
     ]
     return(
         <Box sx={{ display: 'flex',flexDirection: "column"}} className="sidebarcontainer">   
-            <box className="Create-space">
+            <Box className="Create-space">
                 <AddRoundedIcon />
-                <Typography>Create space</Typography>
-            </box>
+                <Typography>Create Space</Typography>
+            </Box>
             <Divider />
             <List className='topics'>
             {createSpaceData.map((text, index) => (
-                <ListItem key={text.name} disablePadding>
+                <ListItem key={index} disablePadding>
                 <ListItemButton>
                     <ListItemIcon className='list-item-icon'>
                         <img src={text.img}/>
                     </ListItemIcon>
-                    <ListItemText primary={text.name} />
+                    <ListItemText primary={text.name}/>
                 </ListItemButton>
                 </ListItem>
             ))}
