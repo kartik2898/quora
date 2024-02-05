@@ -33,7 +33,7 @@
     gap: 15px;
 }
 .post-questionContainer{
-    min-height: 150px;
+    min-height: 115px;
 }
 .btn-cancle{
     color: #636466 !important;
@@ -59,16 +59,29 @@
 .create-post-pName{
     margin: 0;
 }
-.create-post-input{
-    text-decoration: none !important;
-    border-style: none !important;
-}
-.create-post-input:hover{
-    text-decoration: none !important;
-    border-style: none !important;
-}
+
 .create-box-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.file-lang{
+    color: #636466 !important;
+    height: 30px !important;
+    width: 35px !important;
+    min-width: auto !important;
+}
+.file-lang:hover{
+    background-color: white !important;
+    border: 1px solid blue;
+}
+.translate-lang{
+    min-width: auto !important;
+}
+
+.Add-post-btn-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top:1px solid rgb(235, 233, 233);
 }

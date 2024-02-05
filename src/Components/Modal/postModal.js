@@ -13,13 +13,25 @@ import Input from '@mui/material/Input';
 import { RiGroupLine } from "react-icons/ri";
 import pfImg from "../../Assets/profileImg.webp"
 import TextField from '@mui/material/TextField';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import postService from "../../service/PostService";
+import { PiTextAaBold } from "react-icons/pi";
+import { GrGallery } from "react-icons/gr";
 
 
+
+const validationAddQuestion = yup.object({
+    question:yup.string().trim().required(),
+});
+
+const validationAddPost = yup.object({
+    post:yup.string().trim().required(),
+});
 
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
-  
     return (
       <div
         role="tabpanel"
@@ -59,6 +71,38 @@ function PostModal({handleClose}){
         setValue(newValue);
     };
 
+    const qformik = useFormik({
+        initialValues: {
+            question: '',  
+        },
+        validationSchema: validationAddQuestion,
+        onSubmit: (values) => {
+           addQuestion(values)
+        },
+    })
+    const pformik = useFormik({
+        initialValues: {
+            post: '',
+           
+        },
+        validationSchema: validationAddPost,
+        onSubmit: (values) => {
+            addPost(values)
+        },
+    })
+
+    const addPost = (values)=>{
+        var formData = new FormData();
+        formData.append('post',values.post)
+        postService.addPost()
+        
+    }
+    const addQuestion = (values)=>{
+        var formData = new FormData();
+        formData.append('question',values.question)
+        
+    }
+
 
     return(
         <Box className="Post-Modal">
@@ -76,7 +120,7 @@ function PostModal({handleClose}){
                     <Box className="AddQuestion-container">
                         <Box className="Instruction-Component">
                             <Typography component="div">
-                                <h3>Tips on getting good answers quickly</h3>
+                                <Typography variant="h6">Tips on getting good answers quickly</Typography>
                                 <ul>
                                     <li>Make sure your question has not been asked already</li>
                                     <li>Keep your question short and to the point</li>
@@ -89,7 +133,14 @@ function PostModal({handleClose}){
                             <Button variant="outlined" className="try-quora-btn" startIcon={<RiGroupLine />}>P<span>ublic</span></Button>
                         </Box>
                         <Box className="post-questionContainer">
-                            <Input placeholder='Start your question with "What", "How", "Why", etc.' fullWidth />
+                            <Input placeholder='Start your question with "What", "How", "Why", etc.' fullWidth
+                                name="question"
+                                value={qformik.values.question}
+                                onChange={qformik.handleChange}
+                                onBlur={qformik.handleBlur}
+                                error={qformik.touched.question && Boolean(qformik.errors.question)}
+                                helperText={qformik.touched.question && qformik.errors.question}
+                            />
                         </Box>
                         <Box className="Add-cancle-btn-container">
                             <Button variant="text" className="btn-cancle" onClick={handleClose}>C<span>ancle</span>
@@ -98,6 +149,7 @@ function PostModal({handleClose}){
                                 variant="contained" 
                                 sx={{borderRadius:50,backgroundColor:"#96B4FF"}}
                                 type="button"
+                                onClick={qformik.handleSubmit}
                             >
                                 A<span>ddQuestion</span>
                             </Button>
@@ -119,15 +171,30 @@ function PostModal({handleClose}){
                                 id="outlined-multiline-static" 
                                 multiline
                                 fullWidth
-                                rows={12}
+                                rows={10}
                                 placeholder="say something..."
+                                name="post"
+                                value={pformik.values.post}
+                                onChange={pformik.handleChange}
+                                onBlur={pformik.handleBlur}
+                                error={pformik.touched.post && Boolean(pformik.errors.post)}
+                                helperText={pformik.touched.post && pformik.errors.post}
                             />
                         </Box>
-                        <Box className="Add-cancle-btn-container">
+                        <Box className="Add-post-btn-container">
+                            <Box>
+                                <Button variant="text" className="translate-lang file-lang" >
+                                    <PiTextAaBold fontSize={30} />
+                                </Button>
+                                <Button variant="text" className="file-btn file-lang"  >
+                                    <GrGallery fontSize={30}/>
+                                </Button>
+                            </Box>
                             <Button 
                                 variant="contained" 
                                 sx={{borderRadius:50,backgroundColor:"#96B4FF"}}
                                 type="button"
+                                    onClick={pformik.handleSubmit}
                             >
                                 P<span>ost</span>
                             </Button>

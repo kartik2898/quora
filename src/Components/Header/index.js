@@ -104,8 +104,8 @@ function Header(){
                         </Link>
                     </Box>
                     <Box>
-                        <Tabs value={value} onChange={handleChange} aria-label="icon tabs example">
-                            <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" />
+                        <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group">
+                            <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik" />
                             <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following"/>
                             <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following"/>
                             <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"/>

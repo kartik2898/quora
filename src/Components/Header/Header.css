@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white !important;
     
 }
 
@@ -18,16 +19,13 @@
     min-width: 50px !important;
     padding: 12px 10px !important;
 }
-.css-1t4lqmc-MuiButtonBase-root-MuiTab-root.Mui-selected{
-    color: rgb(185,43,39) !important;
-}
-.css-hip9hq-MuiPaper-root-MuiAppBar-root{
-    background-color: white !important;
-}
-.css-1aquho2-MuiTabs-indicator{
+
+.header-tab-group .MuiTabs-indicator{
     background-color:rgb(185,43,39) !important;
 }
-
+.header-tab-group .Mui-selected{
+    color: rgb(185,43,39) !important;
+}
 .css-1y0e51l-MuiInputBase-root{
     font-size: 1.2rem !important;
 }
