@@ -94,7 +94,9 @@ function PostModal({handleClose}){
     const addPost = (values)=>{
         var formData = new FormData();
         formData.append('post',values.post)
-        postService.addPost()
+        postService.addPost().then((res)=>{
+            console.log(res);
+        })
         
     }
     const addQuestion = (values)=>{

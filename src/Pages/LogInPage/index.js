@@ -45,7 +45,7 @@ function LoginPage(){
             localStorage.setItem('token', res?.data?.token)
             setTimeout(() => {
                 // use navigate hook
-                // navigator('/home')
+                navigator('/home');
             }, 100);
         })
     }
