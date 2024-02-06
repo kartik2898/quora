@@ -1,0 +1,30 @@
+
+.space-container-wrapper{
+    max-width: 100% !important;
+    padding: 0 !important;
+    background-color: #f1f2f2;
+}
+.space-container{
+    margin: 0 5rem !important;
+    padding: 1rem;
+}
+.space-product-container{
+    display: grid;
+    grid-row-gap: 1.8rem !important;
+}
+.create-disc-space-card{
+    background-image: url("../../Assets/spacecardBGimg.webp");
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position-x: right;
+    text-align: start;
+    margin-top: 20px;
+    background-color: white !important;
+    padding: 1.5rem;
+    border-radius: 0.15rem;
+}
+.discover-space-container{
+    display: grid;
+    grid-row-gap: 0.8rem !important;
+    text-align: left !important;
+}
