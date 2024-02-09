@@ -15,6 +15,8 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { toast } from "react-toastify";
 import AuthService from "../../service/AuthService.js";
+import { useNavigate } from "react-router-dom";
+
 
 
 const validationLoginSchema = yup.object({
@@ -23,7 +25,7 @@ const validationLoginSchema = yup.object({
 });
 
 function LoginPage(){
-
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -45,7 +47,7 @@ function LoginPage(){
             localStorage.setItem('token', res?.data?.token)
             setTimeout(() => {
                 // use navigate hook
-                navigator('/home');
+                navigate('/home');
             }, 100);
         })
     }

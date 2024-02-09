@@ -95,7 +95,7 @@ function Home(){
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <PostModal handleClose={handleClose}/>
+                <PostModal handleClose={handleClose} getFeeds={getFeeds}/>
             </Modal>
         </Container>
     )

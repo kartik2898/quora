@@ -63,7 +63,7 @@ function CustomTabPanel(props) {
   }
 
 
-function PostModal({handleClose}){
+function PostModal({handleClose,getFeeds}){
 
     const [value, setValue] = useState(0);
 
@@ -90,20 +90,28 @@ function PostModal({handleClose}){
             addPost(values)
         },
     })
+    var file;
+    const handleFileUpload = (event) => {
+        file = event.target.files[0];
+    };
 
     const addPost = (values)=>{
         var formData = new FormData();
-        formData.append('post',values.post)
-        postService.addPost().then((res)=>{
-            console.log(res);
-        })
-        
-    }
+        formData.append('title',values.post)
+        formData.append('images',file)
+        postService.addPost(formData).then((res)=>{
+            handleClose()
+            getFeeds()
+        })   
+    };
     const addQuestion = (values)=>{
         var formData = new FormData();
-        formData.append('question',values.question)
-        
-    }
+        formData.append('title',values.question);  
+        postService.addQuestion(formData).then((res)=>{
+            handleClose()
+            getFeeds()
+        })     
+    };
 
 
     return(
@@ -190,6 +198,7 @@ function PostModal({handleClose}){
                                 </Button>
                                 <Button variant="text" className="file-btn file-lang"  >
                                     <GrGallery fontSize={30}/>
+                                    <input hidden accept="image/*" multiple type="file" onChange={handleFileUpload} />
                                 </Button>
                             </Box>
                             <Button 
