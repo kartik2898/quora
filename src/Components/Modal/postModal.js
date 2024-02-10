@@ -1,5 +1,6 @@
 import "./postModal.css";
 import { useState } from "react";
+import { useRef } from "react";
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -64,7 +65,9 @@ function CustomTabPanel(props) {
 
 
 function PostModal({handleClose,getFeeds}){
-
+    const inputFileRef = useRef();
+    const [file, setFile] = useState();
+    const [uploadedFileURL, setUploadedFileURL] = useState(null);
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -90,9 +93,9 @@ function PostModal({handleClose,getFeeds}){
             addPost(values)
         },
     })
-    var file;
+    
     const handleFileUpload = (event) => {
-        file = event.target.files[0];
+        setFile(event.target.files[0]);
     };
 
     const addPost = (values)=>{
@@ -107,12 +110,15 @@ function PostModal({handleClose,getFeeds}){
     const addQuestion = (values)=>{
         var formData = new FormData();
         formData.append('title',values.question);  
-        postService.addQuestion(formData).then((res)=>{
+        postService.addPost(formData).then((res)=>{
             handleClose()
             getFeeds()
         })     
     };
 
+    const triggerFileUpload = ()=>{
+        inputFileRef.current.click();
+    }
 
     return(
         <Box className="Post-Modal">
@@ -197,8 +203,8 @@ function PostModal({handleClose,getFeeds}){
                                     <PiTextAaBold fontSize={30} />
                                 </Button>
                                 <Button variant="text" className="file-btn file-lang"  >
-                                    <GrGallery fontSize={30}/>
-                                    <input hidden accept="image/*" multiple type="file" onChange={handleFileUpload} />
+                                    <GrGallery fontSize={30} onClick={triggerFileUpload}/>
+                                    <input hidden accept="image/*" ref={inputFileRef} type="file" onChange={handleFileUpload} />
                                 </Button>
                             </Box>
                             <Button 
