@@ -6,19 +6,22 @@ import { Routes,Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './Pages/Home/index.js';
 import Space from './Pages/Space/index.js';
+import UserContextProvider from './contexts/user-context.js';
 
 
 function App() {
   return (
     <>
       <ToastContainer />
-      <div className="App">
-        <Routes>
-          <Route path='/' element={<LoginPage/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/space' element={<Space/>}/>
-        </Routes>
-      </div>
+      <UserContextProvider>
+        <div className="App">
+          <Routes>
+            <Route path='/' element={<LoginPage/>}/>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/space' element={<Space/>}/>
+          </Routes>
+        </div>
+      </UserContextProvider>
     </>
   );
 }

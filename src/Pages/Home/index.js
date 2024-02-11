@@ -15,7 +15,6 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 import { RxPencil1 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import postService from "../../service/PostService";
-import { json } from "react-router-dom";
 import PostModal from "../../Components/Modal/postModal.js";
 
 
@@ -70,7 +69,7 @@ function Home(){
                             <Divider orientation="vertical" flexItem className="Qna-option-div"/>
                             <Button variant="text" className="btn-signUp" startIcon={<HiOutlinePencilAlt fontSize={20}/>}>A<span>nswer</span></Button>
                             <Divider orientation="vertical" flexItem className="Qna-option-div"/>
-                            <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>}>P<span>ost</span></Button>
+                            <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>} onClick={handleOpen}>P<span>ost</span></Button>
                         </Box>
                     </Card>
                     {

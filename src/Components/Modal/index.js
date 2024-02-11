@@ -38,7 +38,7 @@ function SignUpModal({handleClose}){
 
     return(
         <Box className="Sign-Up-Modal">
-            <IconButton onClick={handleClose} sx={{m:0.5}}>
+            <IconButton onClick={handleClose} sx={{m:0.5}} >
                 <CloseRoundedIcon />
             </IconButton>
             <Box className="signUp-form">

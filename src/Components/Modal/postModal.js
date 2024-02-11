@@ -21,7 +21,6 @@ import { PiTextAaBold } from "react-icons/pi";
 import { GrGallery } from "react-icons/gr";
 
 
-
 const validationAddQuestion = yup.object({
     question:yup.string().trim().required(),
 });
@@ -96,6 +95,7 @@ function PostModal({handleClose,getFeeds}){
     
     const handleFileUpload = (event) => {
         setFile(event.target.files[0]);
+        setUploadedFileURL(URL.createObjectURL(event.target.files[0]))
     };
 
     const addPost = (values)=>{
@@ -118,6 +118,10 @@ function PostModal({handleClose,getFeeds}){
 
     const triggerFileUpload = ()=>{
         inputFileRef.current.click();
+    }
+    const closeImg = ()=>{
+        // setFile();
+         setUploadedFileURL(null);
     }
 
     return(
@@ -171,7 +175,6 @@ function PostModal({handleClose,getFeeds}){
                             </Button>
                         </Box>
                     </Box>
-
                 </CustomTabPanel>
                 <CustomTabPanel value={value} index={1}>
                     <Box className="create-box-container">
@@ -182,12 +185,12 @@ function PostModal({handleClose,getFeeds}){
                                 <Button variant="outlined" className="try-quora-btn">C<span>hoose credential</span></Button>
                             </Box>
                         </Box>
-                        <Box>
+                        <Box className="create-post-img-container">
                             <TextField
                                 id="outlined-multiline-static" 
                                 multiline
                                 fullWidth
-                                rows={10}
+                                rows={5}
                                 placeholder="say something..."
                                 name="post"
                                 value={pformik.values.post}
@@ -196,6 +199,10 @@ function PostModal({handleClose,getFeeds}){
                                 error={pformik.touched.post && Boolean(pformik.errors.post)}
                                 helperText={pformik.touched.post && pformik.errors.post}
                             />
+                            <Box className='create-post-img-select'>
+                                {uploadedFileURL && <img src={uploadedFileURL} alt="Uploaded content"className="select-img"/>}
+                                {uploadedFileURL &&   <IconButton onClick={closeImg} sx={{m:0.5}}className="create-post-img-close-icon"><CloseRoundedIcon fontSize="10"/></IconButton>}
+                            </Box>
                         </Box>
                         <Box className="Add-post-btn-container">
                             <Box>

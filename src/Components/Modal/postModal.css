@@ -45,6 +45,19 @@
 .btn-cancle span{
     text-transform: lowercase !important;
 }
+.select-img{
+    height: 100px;
+    width: 30%;
+}
+
+.create-post-img-select{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.create-post-img-close-icon{
+    height: 2px !important;
+}
 .Add-cancle-btn-container{
     text-align:end;
     padding-top: 10px;
