@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import {Container, Box, Typography,Modal } from "@mui/material"
 import logo from "../../Assets/quora-logo.png"
 import TextField from '@mui/material/TextField';
@@ -13,9 +13,9 @@ import Footer from "../../Components/Footer/index.js"
 import SignUpModal from "../../Components/Modal/index.js";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { toast } from "react-toastify";
 import AuthService from "../../service/AuthService.js";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/user-context";
 
 
 
@@ -29,6 +29,7 @@ function LoginPage(){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const {setUserDetail} = useContext(UserContext);
 
     const formik = useFormik({
         initialValues: {
@@ -37,7 +38,6 @@ function LoginPage(){
         },
         validationSchema: validationLoginSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
             handleLogin(values)
         },
     })
@@ -45,8 +45,10 @@ function LoginPage(){
     const handleLogin = (values) => {
         AuthService.login(values.email, values.password).then((res) => {
             localStorage.setItem('token', res?.data?.token)
+
+            setUserDetail(res.data.data)
             setTimeout(() => {
-                // use navigate hook
+                
                 navigate('/home');
             }, 100);
         })

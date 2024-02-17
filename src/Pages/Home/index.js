@@ -13,9 +13,10 @@ import Divider from '@mui/material/Divider';
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { RxPencil1 } from "react-icons/rx";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import postService from "../../service/PostService";
 import PostModal from "../../Components/Modal/postModal.js";
+import { UserContext } from '../../contexts/user-context';
 
 
 
@@ -29,6 +30,7 @@ function Home(){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const {userDetail} = useContext(UserContext);
 
     useEffect(()=>{
         getFeeds();
@@ -57,7 +59,7 @@ function Home(){
                     <Card>
                         <Box className="QNA-Container">
                             <Avatar sx={{ bgcolor: red[500] }} >
-                                <img src=''/>
+                                {userDetail?.name.charAt(0).toUpperCase()}
                               
                             </Avatar>
                             <Box className="QNA-Share" onClick={handleOpen}>
@@ -75,12 +77,7 @@ function Home(){
                     {
                         feeds.map((feed,key)=>(
                             <Cards 
-                                question={feed.title} 
-                                name={feed.author.name}
-                                pfImg ={feed.author.profileImage}
-                                content={feed.content}
-                                psImg ={feed.images}
-                                time ={feed.createdAt}
+                                feed={feed}
                                 key={key}
                             />
                         ))  

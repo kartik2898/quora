@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useNavigate } from "react-router-dom";
 import AuthService from "../../service/AuthService";
 
 const validationSignUpSchema = yup.object({
@@ -17,6 +18,7 @@ const validationSignUpSchema = yup.object({
 
 
 function SignUpModal({handleClose}){
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -25,8 +27,7 @@ function SignUpModal({handleClose}){
         },
         validationSchema: validationSignUpSchema,
         onSubmit: (values) => {
-            handleSignUp(values);
-            
+            handleSignUp(values);   
         },
     })
 
@@ -34,6 +35,12 @@ function SignUpModal({handleClose}){
         AuthService.signUp(values.name, values.email, values.password).then((res) => {
             console.log(res)
         })
+        setTimeout(() => {
+                
+            navigate('/');
+            handleClose(); 
+        }, 100);
+
     }
 
     return(

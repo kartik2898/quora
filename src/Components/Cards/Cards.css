@@ -7,3 +7,74 @@
 .QNa{
     text-align: start !important;
 }
+.like-dislike-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.like-dislike-com-container{
+    display: flex;
+}
+.upvote-btn{
+    background-color:"#96B4FF" !important;
+    border-radius: 1.2rem 0 0 1.2rem!important;
+    border: 1px solid #DEE0E1 !important;
+    font-size: x-small !important;
+}
+.upvote-btn:hover{
+    background-color: #EFEFEF;
+}
+.upvote-btn span{
+    text-transform: lowercase !important;
+}
+
+.downvote-btn{
+    background-color:"#96B4FF" !important;
+    border-radius: 0 1.2rem 1.2rem 0!important;
+    border: 1px solid #DEE0E1 !important;
+}
+.downvote-btn:hover{
+    background-color: #EFEFEF;
+}
+.comment-btn {
+    font-size: medium;
+}
+.comment-btn span{
+    font-size: small;
+}
+.comment-container-wrapper{
+    /* background-color: #F1F2F2; */
+}
+
+.comment-box-container{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #F1F2F2;
+}
+
+.comment-box{
+    /* border-radius: 1px solid rgb(246,246,247) ;
+    
+    padding: 0.5rem 0;
+    border-radius: 35px;
+    color: rgb(149,150,153); */
+    width: 22rem;
+    cursor: pointer;
+}
+.cmt-input{
+    background-color: white !important;
+    border-radius: 1.2rem !important;
+    background: white !important;
+    border-style: none !important;
+    outline: none !important;
+}
+.add-cmmt-btn{
+    border-radius: 20px !important;
+    background-color: #2E69FF !important;
+}
+.cunt-cmt-shr{
+    padding: 0.2rem !important;
+}

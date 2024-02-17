@@ -7,10 +7,19 @@ const addPost = (formData) => {
     return http.post(`https://academics.newtonschool.co/api/v1/quora/post/`,formData);
 };
 
+const getComments = (id)=>{
+    return http.get(`https://academics.newtonschool.co/api/v1/quora/post/${id}/comments`)
+}
+const addComments = (id,content)=>{
+    return http.post(`https://academics.newtonschool.co/api/v1/quora/comment/${id}`,content)
+}
+
 
 const postService = {
     getFeeds,
     addPost,
+    getComments,
+    addComments,
 }
 
 export default postService

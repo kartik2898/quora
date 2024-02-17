@@ -26,6 +26,8 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import { UserContext } from "../../contexts/user-context";
+import { red } from '@mui/material/colors';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -78,6 +80,7 @@ const Search = styled('div')(({ theme }) => ({
 function Header(){
 
   const [value, setValue] = useState(0);
+  const {userDetail} = useContext(UserContext);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -132,7 +135,7 @@ function Header(){
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                       >
-                        <Avatar alt="K" src="/static/images/avatar/2.jpg" />
+                        <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar>
                       </IconButton>
                     </Tooltip>
                   </Box>

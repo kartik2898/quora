@@ -1,5 +1,5 @@
 import "./postModal.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRef } from "react";
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -19,6 +19,7 @@ import * as yup from 'yup';
 import postService from "../../service/PostService";
 import { PiTextAaBold } from "react-icons/pi";
 import { GrGallery } from "react-icons/gr";
+import { UserContext } from "../../contexts/user-context";
 
 
 const validationAddQuestion = yup.object({
@@ -68,6 +69,7 @@ function PostModal({handleClose,getFeeds}){
     const [file, setFile] = useState();
     const [uploadedFileURL, setUploadedFileURL] = useState(null);
     const [value, setValue] = useState(0);
+    const {userDetail} = useContext(UserContext);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -181,7 +183,7 @@ function PostModal({handleClose,getFeeds}){
                         <Box className="createpost-profile-box">
                             <Avatar src={pfImg}/>
                             <Box>
-                                <h4 className="create-post-pName">kartik</h4>
+                                <h4 className="create-post-pName">{userDetail.name}</h4>
                                 <Button variant="outlined" className="try-quora-btn">C<span>hoose credential</span></Button>
                             </Box>
                         </Box>
