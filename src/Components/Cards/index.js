@@ -40,6 +40,7 @@ function Cards({feed}){
     };
     const handleClose = () => {
       setAnchorEl(null);
+    //   deleteComment();
     };
 
     const ITEM_HEIGHT = 48;
@@ -63,6 +64,12 @@ function Cards({feed}){
         })
     }
 
+    const deleteComment = (id)=>{
+        postService.deleteComment(id).then((res)=>{
+            getComments();
+        })
+    }
+
     
     const formik = useFormik({
         initialValues: {
@@ -75,7 +82,7 @@ function Cards({feed}){
     })
 
     const handleComment = (values)=>{
-        postService.addComments(values.content).then(()=>{
+        postService.addComments(feed._id,values).then(()=>{
             getComments();
         })
     }
@@ -161,7 +168,7 @@ function Cards({feed}){
                         </Avatar>
                         <Box className="comment-box">
                             <TextField fullWidth size="small" className='cmt-input'
-                                name="question"
+                                name="content"
                                 value={formik.values.content}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -171,26 +178,60 @@ function Cards({feed}){
                         </Box>
                         <Button variant='contained' className='add-cmmt-btn'onClick={formik.handleSubmit}>Add comment</Button>
                     </Box>
-                        {
-                            comments.map((comment,key)=>(
-                            <Card key={key}>
-                                <CardHeader
-                                    avatar={
-                                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                        {feed.author.profileImage?<img src={feed.author.profileImage}/>:feed.author.name.charAt(0).toUpperCase()}
-                                        </Avatar>
-                                    }
-                                    title={feed.author.name}
-                                    subheader={comment.createdAt}
-                                />
-                                <CardContent>
-                                    <Typography variant="body2" color="text.secondary" sx={{textAlign:"start"}}>
-                                        {comment.content}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                            ))  
-                        }
+                    {
+                        comments.map((comment,key)=>(
+                        <Card key={key}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                    {feed.author.profileImage?<img src={feed.author.profileImage}/>:feed.author.name.charAt(0).toUpperCase()}
+                                    </Avatar>
+                                }
+                                title={feed.author.name}
+                                subheader={comment.createdAt}
+                            />
+                            <CardContent className='content-card'>
+                                <Typography variant="body2" color="text.secondary" sx={{textAlign:"start"}}>
+                                    {comment.content}
+                                </Typography>
+                                <Box>
+                                    <IconButton
+                                        aria-label="more"
+                                        id="long-button"
+                                        aria-controls={open ? 'long-menu' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleClick}
+                                    >
+                                        <BsThreeDots />
+                                    </IconButton>
+                                    <Menu
+                                        id="long-menu"
+                                        MenuListProps={{
+                                        'aria-labelledby': 'long-button',
+                                        }}
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        PaperProps={{
+                                        style: {
+                                            maxHeight: ITEM_HEIGHT * 4.5,
+                                            width: '20ch',
+                                        },
+                                        }}
+                                    >
+                                        {(userDetail._id == comment._id)?(<MenuItem  onClick={()=>{deleteComment()}}>
+                                            Delete
+                                        </MenuItem>):""
+                                        }
+                                        
+                                    </Menu>
+                                </Box>
+                            </CardContent>
+                        </Card>
+                        ))  
+                    }
+                        
                 </Box>
             }
         </Card>

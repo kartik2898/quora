@@ -59,8 +59,7 @@ function Home(){
                     <Card>
                         <Box className="QNA-Container">
                             <Avatar sx={{ bgcolor: red[500] }} >
-                                {userDetail?.name.charAt(0).toUpperCase()}
-                              
+                                {userDetail?.name.charAt(0).toUpperCase()} 
                             </Avatar>
                             <Box className="QNA-Share" onClick={handleOpen}>
                                 What do you want to ask or share?

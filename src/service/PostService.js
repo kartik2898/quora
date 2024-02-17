@@ -13,6 +13,9 @@ const getComments = (id)=>{
 const addComments = (id,content)=>{
     return http.post(`https://academics.newtonschool.co/api/v1/quora/comment/${id}`,content)
 }
+const deleteComment = (commentId)=>{
+    return http.delete(`https://academics.newtonschool.co/api/v1/quora/comment/${commentId}`)
+}
 
 
 const postService = {
@@ -20,6 +23,7 @@ const postService = {
     addPost,
     getComments,
     addComments,
+    deleteComment,
 }
 
 export default postService

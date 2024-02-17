@@ -78,3 +78,7 @@
 .cunt-cmt-shr{
     padding: 0.2rem !important;
 }
+.content-card{
+    display: flex;
+    justify-content: space-between;
+}
