@@ -44,11 +44,10 @@ function LoginPage(){
 
     const handleLogin = (values) => {
         AuthService.login(values.email, values.password).then((res) => {
+            localStorage.setItem('userDetail', JSON.stringify(res?.data?.data))
             localStorage.setItem('token', res?.data?.token)
-
             setUserDetail(res.data.data)
             setTimeout(() => {
-                
                 navigate('/home');
             }, 100);
         })

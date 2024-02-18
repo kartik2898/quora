@@ -3,9 +3,11 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 function UserContextProvider({children}){
-
-
-    const [userDetail, setUserDetail] = useState(null);
+    const getUserDetail = () => {
+       return localStorage.getItem('userDetail') ? JSON.parse(localStorage.getItem('userDetail')) :  null
+    }
+    
+    const [userDetail, setUserDetail] = useState(getUserDetail());
 
     return(
         <UserContext.Provider value={{userDetail,setUserDetail}}>
