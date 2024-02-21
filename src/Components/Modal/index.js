@@ -35,8 +35,7 @@ function SignUpModal({handleClose}){
         AuthService.signUp(values.name, values.email, values.password).then((res) => {
             console.log(res)
         })
-        setTimeout(() => {
-                
+        setTimeout(() => { 
             navigate('/');
             handleClose(); 
         }, 100);

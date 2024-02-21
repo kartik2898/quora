@@ -6,6 +6,8 @@ import { Routes,Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './Pages/Home/index.js';
 import Space from './Pages/Space/index.js';
+import Answer from './Pages/Answer/index.js';
+import GroupPage from './Pages/Space/groupPage.js';
 import UserContextProvider from './contexts/user-context.js';
 
 
@@ -19,6 +21,8 @@ function App() {
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/space' element={<Space/>}/>
+            <Route path='/answer' element={<Answer/>}/>
+            <Route path='/group/:id' element={<GroupPage/>}/>
           </Routes>
         </div>
       </UserContextProvider>

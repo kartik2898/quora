@@ -5,7 +5,7 @@
     background-color: #f1f2f2;
 }
 .space-container{
-    margin: 0 5rem !important;
+    margin: 0 4rem !important;
     padding: 1rem;
 }
 .space-product-container{
@@ -13,6 +13,8 @@
     grid-row-gap: 1.8rem !important;
 }
 .create-disc-space-card{
+    display: flex;
+    flex-direction: column;
     background-image: url("../../Assets/spacecardBGimg.webp");
     background-repeat: no-repeat;
     background-size: 50% 100%;
@@ -22,9 +24,32 @@
     background-color: white !important;
     padding: 1.5rem;
     border-radius: 0.15rem;
+    gap: 0.5rem;
+}
+.space-btn-container{
+    display: flex;
+    gap: 1rem !important;
 }
 .discover-space-container{
     display: grid;
     grid-row-gap: 0.8rem !important;
     text-align: left !important;
+}
+.space-card-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.space-btn{
+    border-radius: 50px !important;
+}
+.space-btn span{
+    text-transform: lowercase !important; 
+}
+.channel-container{
+    display: flex;
+    gap: 0.7rem;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
 }

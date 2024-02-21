@@ -1,2 +1,18 @@
-
-
+.space-card{
+    height: 15rem;
+    width: 12rem !important;
+}
+.space-center-img{
+    position: relative !important;
+    top: -20px;
+    margin: 0 auto !important;
+    border-radius: 2px !important;
+}
+.space-card-content{
+    text-align: center !important;
+    padding: 0px 1rem 1rem 1rem !important;
+    min-height: 8rem !important;
+}
+.channel-name:hover{
+    text-decoration: underline;
+}

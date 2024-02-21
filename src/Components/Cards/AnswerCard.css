@@ -1,0 +1,28 @@
+.Answer-card-wrapper{
+    background-color: #FFFFFF !important;
+    text-align: start;
+    padding: 1rem 1rem 0.4rem;
+    border-bottom: 2px solid #DEE0E1;
+}
+.Answer-ques-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.answer-btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.follow-pass-btn{
+    color: #636466 !important;
+   
+    border-radius: 50px !important;
+}
+.follow-pass-btn:hover{
+    background-color: #f7f7f7 !important;
+}
+.follow-pass-btn span{
+    text-transform: lowercase !important; 
+}
+

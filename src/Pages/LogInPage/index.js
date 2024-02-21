@@ -145,7 +145,6 @@ function LoginPage(){
                             <SignUpModal handleClose={handleClose}/>
                         </Modal>
                     </div>
-                   
                 </Box>
             </Container>
         </>

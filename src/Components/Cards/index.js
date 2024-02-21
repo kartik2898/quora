@@ -48,7 +48,7 @@ function Cards({feed}){
     },[commentOpen])
 
     const getComments = ()=>{
-        postService.getComments(feed._id).then((res)=>{
+        postService.getComments(feed?._id).then((res)=>{
            
             setComments(res.data.data);
             // console.log(res.data.data);
@@ -61,7 +61,7 @@ function Cards({feed}){
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      {feed.author.profileImage?<img src={feed.author.profileImage}/>:feed.author.name.charAt(0).toUpperCase()}
+                      {feed?.author?.profileImage?<img src={feed.author.profileImage}/>:feed?.author?.name?.charAt(0).toUpperCase()}
                     </Avatar>
                 }
                 action={
@@ -69,23 +69,23 @@ function Cards({feed}){
                       <CloseRoundedIcon />
                     </IconButton>
                 }
-                title={feed.author.name}
-                subheader={feed.createdAt}
+                title={feed?.author?.name}
+                subheader={feed?.createdAt}
             />
             <Box sx={{textAlign:"left", padding:"0.5rem 0 0.5rem 1rem" , fontWeight:500}}>
-                {feed.title}
+                {feed?.title}
             </Box>
             {
-                feed.content &&<CardContent>
+                feed?.content &&<CardContent>
                     <Typography variant="body2" color="text.secondary">
-                        {feed.content}
+                        {feed?.content}
                     </Typography>
                 </CardContent>
             }
             <CardMedia
                 component="img"
                 height="auto"
-                image={feed.images[0]}
+                image={feed?.images[0]}
             />
             <Box className="like-dislike-container">
                 <Box className="like-dislike-com-container">
@@ -93,7 +93,7 @@ function Cards({feed}){
                         <Button startIcon={<RxThickArrowUp color='blue'/>} className='upvote-btn' sx={{backgroundColor:"#F7F7F7",color:"#636466"}}>U<span>pvote</span> · {123}</Button>
                         <Button startIcon={<RxThickArrowDown />} className='downvote-btn' sx={{backgroundColor:"#F7F7F7",color:"#636466"}}></Button>
                     </Box>
-                    <IconButton className='comment-btn' onClick={handleCmtOpenandClose}><TbMessageCircle /> <span className='cunt-cmt-shr'>{feed.commentCount>0?feed.commentCount:""}</span></IconButton>
+                    <IconButton className='comment-btn' onClick={handleCmtOpenandClose}><TbMessageCircle /> <span className='cunt-cmt-shr'>{feed?.commentCount>0?feed.commentCount:""}</span></IconButton>
                     <IconButton className='comment-btn share-btn'><RiLoopLeftFill /> <span className='cunt-cmt-shr'></span></IconButton>
                 </Box>
                 <Box>

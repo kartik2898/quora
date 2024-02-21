@@ -1,0 +1,33 @@
+
+.Space-Modal-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: white;
+  border-radius: 5px;
+}
+.space-modal-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+.cspace-close-btn{
+    margin: 0 !important;
+    padding: 0.5rem 0.5rem 0.5rem 0 !important;
+}
+.space-heading-container h3{
+    margin: 0.3rem 0 !important;
+}
+.space-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.space-create-btn-wrapper{
+    text-align:end;
+    padding: 1rem 0rem 1rem 0rem;
+    border-top:1px solid rgb(235, 233, 233);
+}

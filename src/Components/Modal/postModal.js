@@ -30,7 +30,6 @@ const validationAddPost = yup.object({
     post:yup.string().trim().required(),
 });
 
-
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
     return (

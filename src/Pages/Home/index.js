@@ -19,11 +19,7 @@ import PostModal from "../../Components/Modal/postModal.js";
 import { UserContext } from '../../contexts/user-context';
 
 
-
 function Home(){
-
-
-
     const [page,setPage] = useState(0);
     const [feeds,setFeeds] = useState([]);
 
@@ -40,7 +36,6 @@ function Home(){
         postService.getFeeds(page).then((res)=>{
             setFeeds(res.data.data);
         });
-        
     }
 
     return(
