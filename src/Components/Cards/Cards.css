@@ -87,3 +87,8 @@
     justify-content: space-between;
     padding: 0.8rem !important;
 }
+.red-btn{
+    color: red !important;
+    
+    fill: red !important;
+}

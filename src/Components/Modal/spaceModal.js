@@ -7,7 +7,8 @@ import "./spaceModal.css";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import postService from "../../service/PostService";
-
+import { GrGallery } from "react-icons/gr";
+import { useRef,useState } from "react";
 
 function SpaceModal({handleClose, getChannel}){
 
@@ -15,8 +16,11 @@ function SpaceModal({handleClose, getChannel}){
         spaceName:yup.string().trim().required(),
         description:yup.string().trim(),
     });
-    
 
+    const inputFileRef = useRef();
+    const [file, setFile] = useState();
+    const [uploadedFileURL, setUploadedFileURL] = useState(null);
+    
     const formikCreateSpace = useFormik({
         initialValues: {
             spaceName: '',
@@ -27,12 +31,26 @@ function SpaceModal({handleClose, getChannel}){
            createChannel(values)
         },
     })
+
+    const handleFileUpload = (event) => {
+        setFile(event.target.files[0]);
+        setUploadedFileURL(URL.createObjectURL(event.target.files[0]))
+    };
+
+    const triggerFileUpload = ()=>{
+        inputFileRef.current.click();
+    }
     
+    const closeImg = ()=>{
+        setFile(null);
+        setUploadedFileURL(null);
+    }
 
     const createChannel=(values)=>{
         var formData = new FormData();
         formData.append('title',values.spaceName)
         formData.append('description',values.description)
+        formData.append('images',file)
         postService.createChannel(formData).then((res)=>{
             console.log(res);
             handleClose();
@@ -83,7 +101,17 @@ function SpaceModal({handleClose, getChannel}){
                             helperText={formikCreateSpace.touched.description && formikCreateSpace.errors.description}
                         />
                     </Box>
+                    <Box className='create-post-img-select'>
+                        {uploadedFileURL && <img src={uploadedFileURL} alt="Uploaded content"className="select-img"/>}
+                        {uploadedFileURL &&   <IconButton onClick={closeImg} sx={{m:0.5}}className="create-post-img-close-icon"><CloseRoundedIcon fontSize="10"/></IconButton>}
+                    </Box>
                     <Box className="space-create-btn-wrapper">
+                        <Box>
+                            <Button variant="text" className="file-btn file-lang"  >
+                                <GrGallery fontSize={30} onClick={triggerFileUpload}/>
+                                <input hidden accept="image/*" ref={inputFileRef} type="file" onChange={handleFileUpload} />
+                            </Button>
+                        </Box>
                         <Button 
                             variant="contained" 
                             sx={{borderRadius:50,backgroundColor:"#96B4FF"}}

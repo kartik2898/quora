@@ -73,6 +73,7 @@ function Home(){
                             <Cards 
                                 feed={feed}
                                 key={key}
+                                getFeeds = {getFeeds}
                             />
                         ))  
                     }

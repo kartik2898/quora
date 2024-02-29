@@ -219,7 +219,7 @@ function PostModal({handleClose,getFeeds}){
                                 variant="contained" 
                                 sx={{borderRadius:50,backgroundColor:"#96B4FF"}}
                                 type="button"
-                                    onClick={pformik.handleSubmit}
+                                onClick={pformik.handleSubmit}
                             >
                                 P<span>ost</span>
                             </Button>

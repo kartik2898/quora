@@ -22,8 +22,9 @@ function CommentCard({ feed, comments, getComments }) {
             content: "",
         },
         validationSchema: validationCommentSchema,
-        onSubmit: (values) => {
-            handleComment(values)     
+        onSubmit: (values,{resetForm}) => {
+            handleComment(values)
+            resetForm({values:""});    
         },
     })
 
