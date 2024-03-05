@@ -7,6 +7,10 @@
     justify-content: center;
 }
 
+.channel-name-btn-wrapper{
+    padding: 0 !important;
+}
+
 .css-1f2xuhi-MuiDrawer-docked .MuiDrawer-paper{
     background-color: #F1F2F2;
 }

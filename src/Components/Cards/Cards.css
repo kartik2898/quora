@@ -7,6 +7,9 @@
 .QNa{
     text-align: start !important;
 }
+/* .post-img{
+ width: 620px !important;
+} */
 .like-dislike-container{
     display: flex;
     justify-content: space-between;

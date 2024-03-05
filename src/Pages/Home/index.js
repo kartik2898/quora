@@ -17,26 +17,64 @@ import { useEffect, useState, useContext } from "react";
 import postService from "../../service/PostService";
 import PostModal from "../../Components/Modal/postModal.js";
 import { UserContext } from '../../contexts/user-context';
-
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Home(){
     const [page,setPage] = useState(0);
     const [feeds,setFeeds] = useState([]);
-
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [nextPage, setNextpage] = useState(true);
+    const [selectedFeed, setSelectedFeed] = useState([])
     const {userDetail} = useContext(UserContext);
+    const handleOpen = () => setOpen(true);
+
+    const handleClose = (isDataUpdated=false) => {
+        if(isDataUpdated){
+            setPage(0)
+            scrollToTop();
+        }
+        setOpen(false);
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
+    const handleEdit = (feed) => {
+        setSelectedFeed(feed);
+         if(feed?._id){
+            
+        }
+    }
 
     useEffect(()=>{
         getFeeds();
-    },[])
+    },[page])
 
     const getFeeds =()=>{
         postService.getFeeds(page).then((res)=>{
-            setFeeds(res.data.data);
+            if(page==0){
+                setFeeds(res.data.data);
+            }else{
+                let tempFeeds = JSON.parse(JSON.stringify(feeds))
+                tempFeeds=[...tempFeeds,...res.data.data]
+                setFeeds(tempFeeds)
+            }
+            if(res.data.results != 10 || res.data.reults < 10){
+                setNextpage(false)
+            }
+            else{
+                setNextpage(true)
+            }
         });
     }
+
+    const fetchMoreData = () => {
+        setPage((prev)=>prev+1);
+    };
 
     return(
         <Container sx={{ flexGrow: 1 }} className="home-container">
@@ -49,36 +87,45 @@ function Home(){
                     <Box className="sidebar-footer-container">
                         <Footer/>
                     </Box>
-                 </Grid>
-                <Grid xs={6} className="product-card-container">
-                    <Card>
-                        <Box className="QNA-Container">
-                            <Avatar sx={{ bgcolor: red[500] }} >
-                                {userDetail?.name.charAt(0).toUpperCase()} 
-                            </Avatar>
-                            <Box className="QNA-Share" onClick={handleOpen}>
-                                What do you want to ask or share?
-                            </Box>
-                        </Box>
-                        <Box className="QNA-option-container">
-                            <Button variant="text" className="btn-signUp" startIcon={<RiQuestionnaireLine fontSize={20}/>}>A<span>sk</span></Button>
-                            <Divider orientation="vertical" flexItem className="Qna-option-div"/>
-                            <Button variant="text" className="btn-signUp" startIcon={<HiOutlinePencilAlt fontSize={20}/>}>A<span>nswer</span></Button>
-                            <Divider orientation="vertical" flexItem className="Qna-option-div"/>
-                            <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>} onClick={handleOpen}>P<span>ost</span></Button>
-                        </Box>
-                    </Card>
-                    {
-                        feeds.map((feed,key)=>(
-                            <Cards 
-                                feed={feed}
-                                key={key}
-                                getFeeds = {getFeeds}
-                            />
-                        ))  
-                    }
                 </Grid>
-                <Grid xs={3.5} className="Adv-Container"> Advertisement </Grid>
+                    <Grid xs={6} className="product-card-container">
+                        <Card>
+                            <Box className="QNA-Container">
+                                <Avatar sx={{ bgcolor: red[500] }} >
+                                    {userDetail?.name.charAt(0).toUpperCase()} 
+                                </Avatar>
+                                <Box className="QNA-Share" onClick={handleOpen}>
+                                    What do you want to ask or share?
+                                </Box>
+                            </Box>
+                            <Box className="QNA-option-container">
+                                <Button variant="text" className="btn-signUp" startIcon={<RiQuestionnaireLine fontSize={20}/>}>A<span>sk</span></Button>
+                                <Divider orientation="vertical" flexItem className="Qna-option-div"/>
+                                <Button variant="text" className="btn-signUp" startIcon={<HiOutlinePencilAlt fontSize={20}/>}>A<span>nswer</span></Button>
+                                <Divider orientation="vertical" flexItem className="Qna-option-div"/>
+                                <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>} onClick={handleOpen}>P<span>ost</span></Button>
+                            </Box>
+                        </Card>
+                        <InfiniteScroll
+                            dataLength={feeds.length}
+                            next={fetchMoreData}
+                            hasMore={nextPage}
+                            loader={<h4>Loading...</h4>}
+                        >
+                            {
+                                feeds.map((feed,key)=>(
+                                    <Cards 
+                                        feed={feed}
+                                        key={key}
+                                        getFeeds = {getFeeds}
+                                        handleEdit = {handleEdit}
+                                    />
+                                ))  
+                            }
+                        </InfiniteScroll>
+                    </Grid>
+                    <Grid xs={3.5} className="Adv-Container"> Advertisement </Grid>
+                
             </Grid>
             <Modal
                 open={open}
@@ -86,7 +133,7 @@ function Home(){
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <PostModal handleClose={handleClose} getFeeds={getFeeds}/>
+                <PostModal handleClose={handleClose} getFeeds={getFeeds} feed={selectedFeed}/>
             </Modal>
         </Container>
     )

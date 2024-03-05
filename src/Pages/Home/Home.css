@@ -63,3 +63,7 @@
 .Adv-Container{
     margin-top: 5rem;
 }
+.product-and-adv-container{
+    overflow-y: scroll;
+    margin: 0 !important;
+}

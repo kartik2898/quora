@@ -20,7 +20,7 @@ function App() {
           <Routes>
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/home' element={<Home/>}/>
-            <Route path='/space' element={<Space/>}/>
+            <Route path='/spaces' element={<Space/>}/>
             <Route path='/answer' element={<Answer/>}/>
             <Route path='/group/:id' element={<GroupPage/>}/>
           </Routes>

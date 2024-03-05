@@ -1,7 +1,8 @@
 import http from "../http-interceptor";
 
 const getFeeds = (page=0) => {
-    return http.get(`https://academics.newtonschool.co/api/v1/quora/post?limit=100&page=${page}`);
+    console.log(page);
+    return http.get(`https://academics.newtonschool.co/api/v1/quora/post?limit=10&page=${page}`);
 };
 const addPost = (formData) => {
     return http.post(`https://academics.newtonschool.co/api/v1/quora/post/`,formData);
@@ -16,8 +17,8 @@ const addComments = (id,content)=>{
 const deleteComment = (commentId)=>{
     return http.delete(`https://academics.newtonschool.co/api/v1/quora/comment/${commentId}`);
 }
-const getSpace =(page=0)=>{
-    return http.get(`https://academics.newtonschool.co/api/v1/quora/channel?limit=100&page=${page}`);
+const getSpace =(page=0,limit=10)=>{
+    return http.get(`https://academics.newtonschool.co/api/v1/quora/channel?limit=${limit}&page=${page}`);
 }
 
 const getChannel = (id)=>{
@@ -41,11 +42,11 @@ const getCommentUser = (id)=>{
 }
 
 const follow = (channel_id)=>{
-    return  http.post(`https://academics.newtonschool.co/api/v1/quora/follow/:${channel_id}`)
+    return  http.post(`https://academics.newtonschool.co/api/v1/quora/follow/${channel_id}`)
 }
 
 const unfollow= (channel_id)=>{
-    return  http.delete(`https://academics.newtonschool.co/api/v1/quora/follow/:${channel_id}`)
+    return  http.delete(`https://academics.newtonschool.co/api/v1/quora/follow/${channel_id}`)
 }
 
 const upVote = (post_id)=>{
@@ -58,6 +59,10 @@ const downVote = (post_id)=>{
 
 const deletePost = (post_id)=>{
     return http.delete(`https://academics.newtonschool.co/api/v1/quora/post/${post_id}`)
+}
+
+const editPost = (post_id,formData)=>{
+    return http.patch(`https://academics.newtonschool.co/api/v1/quora/post/${post_id}`,formData)
 }
 
 const postService = {
@@ -76,7 +81,8 @@ const postService = {
     unfollow,
     upVote,
     downVote,
-    deletePost
+    deletePost,
+    editPost
 }
 
 export default postService

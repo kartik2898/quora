@@ -1,5 +1,5 @@
 import "./postModal.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -63,11 +63,12 @@ function CustomTabPanel(props) {
   }
 
 
-function PostModal({handleClose,getFeeds}){
+function PostModal({handleClose,getFeeds,feed}){
     const inputFileRef = useRef();
     const [file, setFile] = useState();
     const [uploadedFileURL, setUploadedFileURL] = useState(null);
     const [value, setValue] = useState(0);
+    const [isDataUpdated,setIsDataUpdated] = useState(false);
     const {userDetail} = useContext(UserContext);
 
     const handleChange = (event, newValue) => {
@@ -75,9 +76,10 @@ function PostModal({handleClose,getFeeds}){
     };
 
     const qformik = useFormik({
-        initialValues: {
+        initialValues: { 
             question: '',  
         },
+        enableReinitialize: true,
         validationSchema: validationAddQuestion,
         onSubmit: (values) => {
            addQuestion(values)
@@ -88,12 +90,24 @@ function PostModal({handleClose,getFeeds}){
             post: '',
            
         },
+        enableReinitialize: true,
         validationSchema: validationAddPost,
         onSubmit: (values) => {
             addPost(values)
         },
     })
-    
+    useEffect(()=>{
+        if(feed?._id){
+            setValue(1);
+            console.log(feed);
+            pformik.setValues({
+                post:feed.title,
+            })
+            setUploadedFileURL(feed.images)
+        }
+    },[feed?._id]
+    )
+
     const handleFileUpload = (event) => {
         setFile(event.target.files[0]);
         setUploadedFileURL(URL.createObjectURL(event.target.files[0]))
@@ -103,10 +117,20 @@ function PostModal({handleClose,getFeeds}){
         var formData = new FormData();
         formData.append('title',values.post)
         formData.append('images',file)
-        postService.addPost(formData).then((res)=>{
-            handleClose()
-            getFeeds()
-        })   
+        if(feed._id){
+            setIsDataUpdated(true)
+            postService.editPost(feed._id,formData).then(()=>{
+                handleClose(isDataUpdated);
+                // getFeeds();
+            }) 
+        }  
+        else{
+            setIsDataUpdated(false);
+            postService.addPost(formData).then((res)=>{
+                handleClose()
+                getFeeds()
+            }) 
+        }
     };
     const addQuestion = (values)=>{
         var formData = new FormData();

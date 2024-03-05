@@ -28,6 +28,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { UserContext } from "../../contexts/user-context";
 import { red } from '@mui/material/colors';
+import { useNavigate } from "react-router-dom";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -81,6 +82,8 @@ function Header(){
 
   const [value, setValue] = useState(0);
   const {userDetail} = useContext(UserContext);
+  const navigate = useNavigate();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -92,6 +95,7 @@ function Header(){
   const handleClose = () => {
   setAnchorEl(null);
   };
+
   return(
       <AppBar position="static">
           <Container maxWidth="xl" >
@@ -103,11 +107,11 @@ function Header(){
                   </Box>
                   <Box>
                       <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group">
-                          <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik" />
-                          <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following"/>
-                          <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following"/>
-                          <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"/>
-                          <Tab icon={<SlBell fontSize={30}/>} aria-label="following"/>
+                          <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik"  onClick={()=>navigate("/home")}/>
+                          <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following" onClick={()=>navigate("/following")}/>
+                          <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following" onClick={()=>navigate("/answer")}/>
+                          <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"  onClick={()=>navigate("/spaces")}/>
+                          <Tab icon={<SlBell fontSize={30}/>} aria-label="following" onClick={()=>navigate("/notifications")}/>
                       </Tabs>
                       
                   </Box>

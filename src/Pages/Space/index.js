@@ -5,25 +5,41 @@ import SpaceCard from "../../Components/Cards/SpaceCard";
 import { useEffect, useState } from "react";
 import postService from "../../service/PostService";
 import SpaceModal from "../../Components/Modal/spaceModal";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Space(){
     const [channels, setChannels] = useState([]);
     const [pages, setPages] = useState(0);
-
     const [open, setOpen] = useState(false);
+    const [nextPage, setNextpage] = useState(true);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    
+    var limit = 10;
+
     useEffect(()=>{
         getChannel();
-    },[])
+    },[pages])
 
     const getChannel =()=>{
-        postService.getSpace(pages).then((res)=>{
-            console.log(res)
-            setChannels(res?.data.data)
+        postService.getSpace(pages,limit).then((res)=>{
+            if(pages==0){
+                setChannels(res?.data.data)
+            }else{
+                let tempChannels = JSON.parse(JSON.stringify(channels))
+                tempChannels = [...tempChannels,...res.data.data]
+                setChannels(tempChannels)
+            }
+            if(res.data.results != 10 || res.data?.reults < 10){
+                setNextpage(false);
+            }
         })
     }
+
+    const fetchMoreData = () => {
+        setPages((prev)=>prev+1)
+    };
 
     return(<>
     <Container className="space-container-wrapper">
@@ -42,13 +58,20 @@ function Space(){
                     <Box fontSize="large" fontWeight="bold">Discover Spaces</Box>
                     <Box className="space-card-wrapper">
                         <Box fontWeight={500}>Spaces you might like</Box>
-                        <Box className="channel-container">
-                            {
-                            channels.map((channel,key)=>(
-                                <SpaceCard channel={channel} key={key} />
-                            ))
-                            }
-                        </Box>
+                        <InfiniteScroll
+                            dataLength={channels.length}
+                            next={fetchMoreData}
+                            hasMore={nextPage}
+                            loader={<h4>Loading...</h4>}
+                        >
+                            <Box className="channel-container">
+                                {
+                                    channels.map((channel,key)=>(
+                                        <SpaceCard channel={channel} key={key} />
+                                    ))
+                                }
+                            </Box>
+                        </InfiniteScroll>
                     </Box>
                </Box>
             </Grid>

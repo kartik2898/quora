@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {Box,Modal} from '@mui/material';
 import { red } from '@mui/material/colors';
 import "./Cards.css"
 import { RxThickArrowUp } from "react-icons/rx";
@@ -23,7 +23,7 @@ import postService from '../../service/PostService';
 import CommentCard from './commentCard';
 
 
-function Cards({feed , getFeeds}){
+function Cards({feed , getFeeds , handleEdit}){
     const {userDetail} = useContext(UserContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const [commentOpen, setCommentOpen] = useState(false);
@@ -31,8 +31,9 @@ function Cards({feed , getFeeds}){
     const [postDetail, setPostDetail] = useState([]);
     const [upVote, setUpVote] = useState(false);
     const [downVote, setDownVote] = useState(false);
-    const [likes, setLikes] = useState(feed.likeCount);
+    const [likes, setLikes] = useState(feed?.likeCount||0);
     const open = Boolean(anchorEl);
+
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -54,11 +55,13 @@ function Cards({feed , getFeeds}){
 
 
     useEffect(()=>{
-        if(feed.author?.name){
+        if(feed?.author?.name){
             setPostDetail(feed)
         }
         else{
-            getPostDetail()
+            if(feed?._id){
+                getPostDetail()
+            }
         }
     },[feed])
 
@@ -72,7 +75,7 @@ function Cards({feed , getFeeds}){
     }
 
     const getPostDetail =()=>{
-        postService.getPost(feed._id).then((res)=>{
+        postService.getPost(feed?._id).then((res)=>{
             setPostDetail(res.data.data)
         });
     };
@@ -123,13 +126,12 @@ function Cards({feed , getFeeds}){
         handleClose();
     }
 
-
     return(
         <Card>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      {postDetail?.author?.profileImage?<img src={postDetail.author.profileImage}/>:(feed?feed:postDetail)?.author?.name?.charAt(0).toUpperCase()}
+                      {postDetail?.author?.profileImage?<img src={postDetail?.author?.profileImage}/>:(feed?feed:postDetail)?.author?.name?.charAt(0).toUpperCase()}
                     </Avatar>
                 }
                 action={
@@ -151,6 +153,7 @@ function Cards({feed , getFeeds}){
                 </CardContent>
             }
             <CardMedia
+                className='post-img'
                 component="img"
                 height="auto"
                 image={feed?.images[0]}
@@ -173,7 +176,7 @@ function Cards({feed , getFeeds}){
                     <IconButton className='comment-btn' onClick={handleCmtOpenandClose}><TbMessageCircle /> <span className='cunt-cmt-shr'>{feed?.commentCount>0?feed.commentCount:""}</span></IconButton>
                     <IconButton className='comment-btn share-btn'><RiLoopLeftFill /> <span className='cunt-cmt-shr'></span></IconButton>
                 </Box>
-                {userDetail._id==feed.author._id &&
+                {userDetail?._id==feed?.author?._id &&
                     <Box>
                         <IconButton
                             aria-label="more"
@@ -202,6 +205,9 @@ function Cards({feed , getFeeds}){
                         >
                             <MenuItem  onClick={deletePost}>
                                 Delete
+                            </MenuItem>
+                            <MenuItem  onClick={handleEdit(feed)}>
+                                Edit
                             </MenuItem>
                         </Menu>
                     </Box>

@@ -1,3 +1,4 @@
+import { useState,useEffect } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -16,8 +17,29 @@ import book from '../../Assets/book.jpeg'
 import tech from '../../Assets/Technology.jpeg'
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import './Sidebar.css';
+import postService from '../../service/PostService';
+import { useNavigate } from "react-router-dom";
  
 function SideBar(){
+    const [channels, setChannels] = useState([]);
+    const [pages, setPages] = useState(0);
+    const navigate = useNavigate();
+   
+
+    useEffect(()=>{
+        getChannel();
+    },[])
+
+    const getChannel =()=>{
+        postService.getSpace(pages).then((res)=>{
+            console.log(res)
+            setChannels(res?.data.data)
+        })
+    }
+
+    // const handleChanneluserId = (channel_id)=>{
+    //     navigate(`/group/${channel_id}`);
+    // }
 
     const createSpaceData = [
         {
@@ -53,6 +75,8 @@ function SideBar(){
         img:tech,
         },
     ]
+
+
     return(
         <Box sx={{ display: 'flex',flexDirection: "column"}} className="sidebarcontainer">   
             <Box className="Create-space">
@@ -61,13 +85,13 @@ function SideBar(){
             </Box>
             <Divider />
             <List className='topics'>
-            {createSpaceData.map((text, index) => (
-                <ListItem key={index} disablePadding>
-                <ListItemButton>
+            {channels.map((channel, index) => (
+                <ListItem key={index} disablePadding onClick={()=>navigate(`/group/${channel._id}`)}>
+                <ListItemButton className='channel-name-btn-wrapper'>
                     <ListItemIcon className='list-item-icon'>
-                        <img src={text.img}/>
+                        <img src={channel.image}/>
                     </ListItemIcon>
-                    <ListItemText primary={text.name}/>
+                    <ListItemText primary={channel.name}/>
                 </ListItemButton>
                 </ListItem>
             ))}
