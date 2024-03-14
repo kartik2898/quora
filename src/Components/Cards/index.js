@@ -46,6 +46,10 @@ function Cards({feed , getFeeds , handleEdit}){
         setCommentOpen(!commentOpen);
     }
 
+    const edit = ()=>{
+        handleEdit(feed);
+        handleClose();
+    }
     useEffect(()=>{
         if(commentOpen){
             getComments();
@@ -81,7 +85,7 @@ function Cards({feed , getFeeds , handleEdit}){
     };
 
     const like = ()=>{
-        
+
         if(!upVote && !downVote){
             setUpVote(true);
             setLikes((prev) => prev+1)
@@ -162,9 +166,9 @@ function Cards({feed , getFeeds , handleEdit}){
                 <Box className="like-dislike-com-container">
                     <Box>
                         <Button startIcon={<RxThickArrowUp color='blue'/>} 
-                        className='upvote-btn' 
-                        sx={{backgroundColor:"#F7F7F7",color:"#636466"}}
-                        onClick={like}
+                            className='upvote-btn' 
+                            sx={{backgroundColor:"#F7F7F7",color:"#636466"}}
+                            onClick={like}
                         >
                             U<span>pvote</span> · {likes}</Button>
                         <Button startIcon={<RxThickArrowDown className={downVote && "red-btn"} />} 
@@ -206,7 +210,7 @@ function Cards({feed , getFeeds , handleEdit}){
                             <MenuItem  onClick={deletePost}>
                                 Delete
                             </MenuItem>
-                            <MenuItem  onClick={handleEdit(feed)}>
+                            <MenuItem  onClick={edit}>
                                 Edit
                             </MenuItem>
                         </Menu>

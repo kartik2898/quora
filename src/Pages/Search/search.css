@@ -1,0 +1,33 @@
+.search-container{
+    display: flex !important;
+    background-color: rgb(239,240,240);
+    justify-content: center !important;
+    /* align-items: center !important; */
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100%;
+}
+
+.search-res-wrapper{
+    background-color: white;
+    width: 30rem;
+    height: fit-content;
+}
+.search-result-container{
+    text-align: start !important;
+    padding: 0.3rem 0 0.4rem 1rem;
+    border-bottom: 1px solid rgb(239,240,240);
+}
+.search-QNA-container{
+    text-align: start !important;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(239,240,240);
+}
+.search-QNA-box{
+    display: flex;
+    flex-direction: column;
+    gap:0.3rem;
+}
+.search-like-btn{
+    padding-top: 1rem;
+}

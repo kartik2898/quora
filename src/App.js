@@ -9,6 +9,10 @@ import Space from './Pages/Space/index.js';
 import Answer from './Pages/Answer/index.js';
 import GroupPage from './Pages/Space/groupPage.js';
 import UserContextProvider from './contexts/user-context.js';
+import Search from './Pages/Search/index.js';
+import User from './Pages/UserPage/index.js';
+import Following from './Pages/Following/index.js';
+import Notification from './Pages/Notification/index.js';
 
 
 function App() {
@@ -21,8 +25,12 @@ function App() {
             <Route path='/' element={<LoginPage/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/spaces' element={<Space/>}/>
-            <Route path='/answer' element={<Answer/>}/>
             <Route path='/group/:id' element={<GroupPage/>}/>
+            <Route path='/answer' element={<Answer/>}/>
+            <Route path='/following' element={<Following/>}/>
+            <Route path='/notifications' element={<Notification/>}/>
+            <Route path='/search' element={<Search/>}/>
+            <Route path='/user' element={<User/>}/>
           </Routes>
         </div>
       </UserContextProvider>

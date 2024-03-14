@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./Header.css";
-import {Container, Box, Typography } from "@mui/material";
+import {Container, Box ,Modal} from "@mui/material";
 import Link from '@mui/material/Link';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { HiOutlinePencilAlt } from "react-icons/hi";
@@ -23,12 +23,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { UserContext } from "../../contexts/user-context";
+import { ProductFeeds } from "../../contexts/user-context";
 import { red } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import PostModal from "../../Components/Modal/postModal.js";
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -77,12 +80,20 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
+const validationForm = yup.object({
+  search:yup.string().trim().required(),
+});
+
 
 function Header(){
 
   const [value, setValue] = useState(0);
+  const [modalOpen, setModelOpen] = useState(false);
   const {userDetail} = useContext(UserContext);
   const navigate = useNavigate();
+
+  const handleModelOpen = () => setModelOpen(true);
+  const handleModelClose = () => setModelOpen(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -96,95 +107,134 @@ function Header(){
   setAnchorEl(null);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      search:"",
+    },
+    validationSchema: validationForm,
+    onSubmit: (values) => {
+      handleSearch(values);
+    },
+  });
+
+  const handleSearch=(values)=>{
+    navigate('/search',{state : {title:values}})
+    // navigate('/search')
+  }
+
+  const handleLogout = ()=>{
+    localStorage.clear();
+    navigate('/');
+    handleClose();
+
+  }
+
+  const handleUserProfile = ()=>{
+    navigate('/user');
+    handleClose();
+  }
+
   return(
-      <AppBar position="static">
-          <Container maxWidth="xl" >
-              <Toolbar disableGutters className="header-Box">
-                  <Box className="logo-image-container">
-                      <Link href="#" underline="none">
-                          <img src={logo} className="Header-logo"></img>
-                      </Link>
-                  </Box>
-                  <Box>
-                      <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group">
-                          <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik"  onClick={()=>navigate("/home")}/>
-                          <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following" onClick={()=>navigate("/following")}/>
-                          <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following" onClick={()=>navigate("/answer")}/>
-                          <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"  onClick={()=>navigate("/spaces")}/>
-                          <Tab icon={<SlBell fontSize={30}/>} aria-label="following" onClick={()=>navigate("/notifications")}/>
-                      </Tabs>
-                      
-                  </Box>
-                  <Box>
-                      <Search>
-                          <SearchIconWrapper>
-                              <SearchIcon />
-                          </SearchIconWrapper>
-                          <StyledInputBase
-                          placeholder="Search Quora"
-                          inputProps={{ 'aria-label': 'search' }}
-                          />
-                      </Search>
-                  </Box>
-                  <Box sx={{ml:2}} >
-                    <Button variant="outlined" className="try-quora-btn">T<span>ry Quora+</span></Button>
-                  </Box>
-                  <Box>
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                      >
-                        <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar>
-                      </IconButton>
-                    </Tooltip>
-                  </Box>
-                  <Menu
-                    anchorEl={anchorEl}
-                    id="account-menu"
-                    open={open}
-                    onClose={handleClose}
-                    onClick={handleClose}
-                    
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+  <AppBar position="static">
+      <Container maxWidth="xl" >
+          <Toolbar disableGutters className="header-Box">
+              <Box className="logo-image-container">
+                  <Link href="/home" underline="none">
+                      <img src={logo} className="Header-logo"></img>
+                  </Link>
+              </Box>
+              <Box>
+                  <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group">
+                    <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik"  onClick={()=>navigate("/home")}/>
+                    <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following" onClick={()=>navigate("/following")}/>
+                    <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following" onClick={()=>navigate("/answer")}/>
+                    <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"  onClick={()=>navigate("/spaces")}/>
+                    <Tab icon={<SlBell fontSize={30}/>} aria-label="following" onClick={()=>navigate("/notifications")}/>
+                  </Tabs>
+              </Box>
+              <Box>
+                <form onSubmit={formik.handleSubmit}>
+                  <Search>
+                    <SearchIconWrapper>
+                        <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search Quora"
+                      inputProps={{ 'aria-label': 'search' }}
+                      name="search"
+                      value={formik.values.search}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      error={formik.touched.search && Boolean(formik.errors.search)}
+                      helperText={formik.touched.search && formik.errors.search}
+                    />
+                  </Search>
+                </form>
+              </Box>
+              <Box sx={{ml:2}} >
+                <Button variant="outlined" className="try-quora-btn">T<span>ry Quora+</span></Button>
+              </Box>
+              <Box>
+                <Tooltip title="Account settings">
+                  <IconButton
+                    onClick={handleClick}
+                    size="small"
+                    sx={{ ml: 2 }}
+                    aria-controls={open ? 'account-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
                   >
-                    <MenuItem onClick={handleClose}>
-                      <Avatar /> Profile
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <Avatar /> My account
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                      </ListItemIcon>
-                      Add another account
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Settings fontSize="small" />
-                      </ListItemIcon>
-                      Settings
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Logout fontSize="small" />
-                      </ListItemIcon>
-                      Logout
-                    </MenuItem>
-                </Menu>
-                <Box sx={{ml:2}}>
-                  <Button variant="contained" className="Add-qus-btn">A<span>dd question</span></Button>
-                </Box>
-              </Toolbar>
-          </Container>
-      </AppBar>
+                    <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar>
+                  </IconButton>
+                </Tooltip>
+              </Box>
+              <Menu
+                anchorEl={anchorEl}
+                id="account-menu"
+                open={open}
+                onClose={handleClose}
+                onClick={handleClose}
+                
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+              >
+                <MenuItem onClick={handleUserProfile}>
+                  <Avatar /> <span style={{paddingLeft:"0.7rem"}}>Profile</span>
+                </MenuItem>
+                <Divider />
+                {/* <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <PersonAdd fontSize="small" />
+                  </ListItemIcon>
+                  Add another account
+                </MenuItem> */}
+                {/* <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <Settings fontSize="small" />
+                  </ListItemIcon>
+                  Settings
+                </MenuItem> */}
+                <MenuItem onClick={handleLogout}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+            </Menu>
+            <Box sx={{ml:2}}>
+              <Button variant="contained" className="Add-qus-btn" onClick={handleModelOpen}>A<span>dd question</span></Button>
+            </Box>
+            <Modal
+                open={modalOpen}
+                onClose={handleModelClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <PostModal handleClose={handleModelClose}/>
+            </Modal>
+          </Toolbar>
+      </Container>
+  </AppBar>
   )
 }
 

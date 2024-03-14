@@ -18,7 +18,7 @@ function GroupPage(){
         getChannelDetail()
         getChannelPosts()
     },[id])
-    console.log(channelDetail);
+    
     const getChannelDetail =()=>{
         postService.getChannel(id).then((res)=>{
             setChannelDetail(res.data.data)

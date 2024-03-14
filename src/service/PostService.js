@@ -1,7 +1,7 @@
 import http from "../http-interceptor";
 
 const getFeeds = (page=0) => {
-    console.log(page);
+    // console.log(page);
     return http.get(`https://academics.newtonschool.co/api/v1/quora/post?limit=10&page=${page}`);
 };
 const addPost = (formData) => {
@@ -65,6 +65,9 @@ const editPost = (post_id,formData)=>{
     return http.patch(`https://academics.newtonschool.co/api/v1/quora/post/${post_id}`,formData)
 }
 
+const search = (searchTerm)=>{
+    return http.get(`https://academics.newtonschool.co/api/v1/quora/post?search=${searchTerm}`)
+}
 const postService = {
     getFeeds,
     addPost,
@@ -82,7 +85,8 @@ const postService = {
     upVote,
     downVote,
     deletePost,
-    editPost
+    editPost,
+    search
 }
 
 export default postService

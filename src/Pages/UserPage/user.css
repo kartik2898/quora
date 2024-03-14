@@ -1,0 +1,42 @@
+
+
+.user-container{
+    display: flex;
+    margin: 2rem 5rem 0 5rem;
+}
+
+.user-box{
+    width: 50%;
+}
+
+.user-profile-box{
+    display: flex;
+    column-gap: 10px;
+    width: 50%;
+    border-bottom: 2px solid rgb(239,240,240);
+    padding-bottom: 2rem;
+}
+
+.user-name{
+    margin: 0 !important;
+}
+
+.user-profile-detail-box{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    
+}
+
+.user-highlights{
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgb(239,240,240);
+}
+
+.user-details-container{
+    text-align: start;
+    
+}
+.user-detail-box{
+    padding-top: 0.5rem;
+}

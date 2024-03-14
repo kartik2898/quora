@@ -62,15 +62,13 @@ function CustomTabPanel(props) {
     };
   }
 
-
-function PostModal({handleClose,getFeeds,feed}){
+function PostModal({handleClose,feed,idx=0}){
     const inputFileRef = useRef();
     const [file, setFile] = useState();
     const [uploadedFileURL, setUploadedFileURL] = useState(null);
-    const [value, setValue] = useState(0);
-    const [isDataUpdated,setIsDataUpdated] = useState(false);
-    const {userDetail} = useContext(UserContext);
-
+    const [value, setValue] = useState(idx);
+    const {userDetail,getFeeds} = useContext(UserContext);
+  
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -88,7 +86,6 @@ function PostModal({handleClose,getFeeds,feed}){
     const pformik = useFormik({
         initialValues: {
             post: '',
-           
         },
         enableReinitialize: true,
         validationSchema: validationAddPost,
@@ -103,7 +100,9 @@ function PostModal({handleClose,getFeeds,feed}){
             pformik.setValues({
                 post:feed.title,
             })
-            setUploadedFileURL(feed.images)
+            if(feed.images.length>0){
+                setUploadedFileURL(feed.images[0])
+            }
         }
     },[feed?._id]
     )
@@ -116,16 +115,16 @@ function PostModal({handleClose,getFeeds,feed}){
     const addPost = (values)=>{
         var formData = new FormData();
         formData.append('title',values.post)
-        formData.append('images',file)
-        if(feed._id){
-            setIsDataUpdated(true)
+        if(file){
+            formData.append('images',file)
+        }
+        if(feed?._id){
             postService.editPost(feed._id,formData).then(()=>{
-                handleClose(isDataUpdated);
+                handleClose(true);
                 // getFeeds();
             }) 
         }  
         else{
-            setIsDataUpdated(false);
             postService.addPost(formData).then((res)=>{
                 handleClose()
                 getFeeds()

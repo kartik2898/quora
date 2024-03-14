@@ -117,7 +117,7 @@ function LoginPage(){
                         <Box className="signUp-email-container">
 
                             <Box className="TermsAndCondition">
-                                By continuing you indicate that you agree to Quora's <Link href="">Terms of Service</Link> and <Link href="">Privacy Policy</Link>.
+                                By continuing you indicate that you agree to Quora's <Link >Terms of Service</Link> and <Link href="">Privacy Policy</Link>.
                             </Box>
                             <Button variant="outlined"sx={{ width: 290 }} startIcon={<img className="gImg" src={gI}/>}>
                                 Continue with Google
