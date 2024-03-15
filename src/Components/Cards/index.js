@@ -131,7 +131,7 @@ function Cards({feed , getFeeds , handleEdit}){
     }
 
     return(
-        <Card>
+        <Card className='card-container'>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

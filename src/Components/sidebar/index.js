@@ -41,41 +41,6 @@ function SideBar(){
     //     navigate(`/group/${channel_id}`);
     // }
 
-    const createSpaceData = [
-        {
-        name:"Sports",
-        img:sport,
-        },
-        {
-        name:"Marketing",
-        img: marketing,
-        },
-        {
-        name:"Finance",
-        img:finance,
-        },
-        {
-        name:"Philosophy",
-        img:philosophy,
-        },
-        {
-        name:"Fashion and Style",
-        img:fashion,
-        },
-        {
-        name:"Books",
-        img:book,
-        },
-        {
-        name:"Science",
-        img:science,
-        },
-        {
-        name:"Technology",
-        img:tech,
-        },
-    ]
-
 
     return(
         <Box sx={{ display: 'flex',flexDirection: "column"}} className="sidebarcontainer">   
