@@ -78,11 +78,6 @@
     /* margin-top: 5rem; */
 }
 .product-and-adv-container{
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     margin: 0 !important;
-}
-.flex-container{
-    display: flex;
-    overflow-y: scroll !important;
-    overflow-x: hidden !important;
 }

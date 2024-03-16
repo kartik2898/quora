@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Icon, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
 import "./groupPage.css"
 import Cards from "../../Components/Cards";
@@ -26,7 +26,9 @@ function GroupPage(){
     }
     const getChannelPosts =()=>{
         postService.getChannelPost(id).then((res)=>{
-            setChannelPosts(res.data.data);
+            const data = res.data.data;
+            let channelPost = data.filter((data)=> data != null);
+            setChannelPosts(channelPost);
         })
     }
 

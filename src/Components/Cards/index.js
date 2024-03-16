@@ -34,6 +34,7 @@ function Cards({feed , getFeeds , handleEdit}){
     const [likes, setLikes] = useState(feed?.likeCount||0);
     const open = Boolean(anchorEl);
 
+    console.log(feed);
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
