@@ -126,9 +126,8 @@ function Header(){
     localStorage.clear();
     navigate('/');
     handleClose();
-
   }
-
+  
   const handleUserProfile = ()=>{
     navigate('/user');
     handleClose();
@@ -136,7 +135,7 @@ function Header(){
 
   return(
   <AppBar position="static">
-      <Container maxWidth="xl" >
+      <Container maxWidth="xl" className="max-ewd-100vw" >
           <Toolbar disableGutters className="header-Box">
               <Box className="logo-image-container">
                   <Link href="/home" underline="none">

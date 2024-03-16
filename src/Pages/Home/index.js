@@ -1,6 +1,5 @@
 import { Container,Box,Modal } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
-import Header from "../../Components/Header";
 import SideBar from "../../Components/sidebar";
 import Cards from "../../Components/Cards";
 import "./Home.css";
@@ -57,9 +56,6 @@ function Home(){
     return(
         <Container sx={{ flexGrow: 1 }} className="home-container">
             <Grid container spacing={2} className="home-Product-container">
-                <Grid xs={12} className="header-container">
-                    <Header/> 
-                </Grid>
                 <Grid xs={2.5} className="sidebar-container"> 
                     <SideBar/>
                     <Box className="sidebar-footer-container">

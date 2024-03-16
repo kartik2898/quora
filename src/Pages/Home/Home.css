@@ -2,13 +2,17 @@
     max-width: 100% !important;
     padding: 0 !important;
     background-color: #f1f2f2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 1rem !important;
 }
 .home-Product-container{
-    margin: 0 !important;
+    /* margin: 0 !important; */
     position: relative;
 }
 .css-19r6kue-MuiContainer-root{
     padding: 0 !important;
+    margin: 0 !important;
 }
 .header-container{
     position: fixed !important;
@@ -41,7 +45,7 @@
     padding-top: 1rem !important;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
     min-width: min-content !important;
 }
 .sidebar-footer-container{
@@ -51,7 +55,7 @@
 }
 
 .product-card-container{
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -71,7 +75,7 @@
     height: 1.9rem !important;
 }
 .Adv-Container{
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
 }
 .product-and-adv-container{
     overflow-y: scroll;
