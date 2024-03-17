@@ -14,6 +14,7 @@ import User from './Pages/UserPage/index.js';
 import Following from './Pages/Following/index.js';
 import Notification from './Pages/Notification/index.js';
 import Layout from './layout/index.js';
+import Protected from './protected/index.js';
 
 
 function App() {

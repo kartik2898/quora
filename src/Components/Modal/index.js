@@ -36,7 +36,7 @@ function SignUpModal({handleClose}){
             console.log(res)
         })
         setTimeout(() => { 
-            navigate('/');
+            navigate('/auth');
             handleClose(); 
         }, 100);
 
