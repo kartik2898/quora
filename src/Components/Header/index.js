@@ -143,8 +143,8 @@ function Header(){
                   </Link>
               </Box>
               <Box>
-                  <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group">
-                    <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" className="kartik"  onClick={()=>navigate("/home")}/>
+                  <Tabs value={value} onChange={handleChange} aria-label="icon tabs example" className="header-tab-group min-width">
+                    <Tab icon={<HomeOutlinedIcon fontSize="large"/>} aria-label="home" onClick={()=>navigate("/home")}/>
                     <Tab icon={<ListAltIcon fontSize="large"/>} aria-label="following" onClick={()=>navigate("/following")}/>
                     <Tab icon={<HiOutlinePencilAlt fontSize={34}/>} aria-label="following" onClick={()=>navigate("/answer")}/>
                     <Tab icon={<GrGroup fontSize={30}/>} aria-label="following"  onClick={()=>navigate("/spaces")}/>

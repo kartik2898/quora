@@ -21,10 +21,11 @@
     width: 8rem;
     height: 1.7rem;
 }
-.css-1t4lqmc-MuiButtonBase-root-MuiTab-root{
+.header-tab-group .css-1t4lqmc-MuiButtonBase-root-MuiTab-root{
     min-width: 50px !important;
     padding: 12px 10px !important;
 }
+
 
 .header-tab-group .MuiTabs-indicator{
     background-color:rgb(185,43,39) !important;
