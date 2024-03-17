@@ -21,7 +21,7 @@
     width: 8rem;
     height: 1.7rem;
 }
-.header-tab-group .css-1t4lqmc-MuiButtonBase-root-MuiTab-root{
+.miui-tab{
     min-width: 50px !important;
     padding: 12px 10px !important;
 }
