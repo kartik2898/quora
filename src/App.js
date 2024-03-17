@@ -26,7 +26,10 @@ function App() {
           <Routes>
             <Route path='/auth' element={<LoginPage />} />
             
-            <Route path='/' element={<Layout />}>
+            <Route path='/' element={<Protected>
+              <Layout />
+            </Protected>
+           }>
               <Route path='/home' element={<Home />} />
               <Route path='/spaces' element={<Space />} />
               <Route path='/group/:id' element={<GroupPage />} />
