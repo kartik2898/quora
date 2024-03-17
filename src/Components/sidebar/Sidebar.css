@@ -9,15 +9,12 @@
 
 .channel-name-btn-wrapper{
     padding: 0 !important;
-}
-
-.css-1f2xuhi-MuiDrawer-docked .MuiDrawer-paper{
-    background-color: #F1F2F2;
-}
-
-.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
     column-gap: 15px;
 }
+
+/* .css-1f2xuhi-MuiDrawer-docked .MuiDrawer-paper{
+    background-color: #F1F2F2;
+} */
 
 .list-item-icon{
     justify-content: flex-end;

@@ -2,10 +2,10 @@
 .card-container{
     margin-bottom: 0.5rem;
 }
-.css-et1ao3-MuiTypography-root{
+.MuiCardHeader-title{
     text-align: start !important;
 }
-.css-83ijpv-MuiTypography-root{
+.MuiCardHeader-subheader{
     text-align: start !important;
 }
 .QNa{

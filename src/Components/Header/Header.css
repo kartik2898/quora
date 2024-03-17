@@ -10,7 +10,7 @@
 .max-ewd-100vw{
     max-width: 100vw !important;
     padding: 0 !important;
-    width: 100vw !important;
+    /* width: 100vw !important; */
 }
 
 .logo-image-container{
