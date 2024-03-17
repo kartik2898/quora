@@ -156,8 +156,8 @@ function PostModal({handleClose,feed,idx=0}){
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} className="Add-create-tab-box">
-                        <Tab label="Add Question" {...a11yProps(0)} />
-                        <Tab label="Create Post" {...a11yProps(1)} />
+                        <Tab label="Add Question" {...a11yProps(0)} className="tab-btn-idx-wd"/>
+                        <Tab label="Create Post" {...a11yProps(1)} className="tab-btn-idx-wd"/>
                     </Tabs>
                 </Box>
                 <CustomTabPanel value={value} index={0}>
