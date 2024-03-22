@@ -152,7 +152,7 @@ function Cards({feed , getFeeds , handleEdit}){
             </Box>
             {
                 feed?.content &&<CardContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" textAlign={'left'}>
                         {feed?.content}
                     </Typography>
                 </CardContent>

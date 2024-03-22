@@ -12,7 +12,7 @@ import Divider from '@mui/material/Divider';
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { RxPencil1 } from "react-icons/rx";
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import PostModal from "../../Components/Modal/postModal.js";
 import { UserContext } from '../../contexts/user-context';
 import InfiniteScroll from "react-infinite-scroll-component";
