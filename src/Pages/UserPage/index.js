@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import { useContext } from "react";
 import pfImg from "../../Assets/profileImg.webp"
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import { UserContext } from "../../contexts/user-context";
 import "./user.css"
 
@@ -13,12 +12,25 @@ function User(){
     console.log(userDetail);
     return(<>
         <Box className="user-container">
-            <Box className="user-profile-box">
-                <Avatar src={pfImg} sx={{height:120, width:120}}/>
-                <Box>
-                    <h1 className="user-name">{userDetail.name}</h1>
+            <Box className="user-profile-container">
+                <Box className="user-profile-box">
+                    <Avatar src={pfImg} sx={{height:120, width:120}}/>
+                    <Box>
+                        <h1 className="user-name">{userDetail.name}</h1>
+                    </Box>
+                </Box>
+                <Box className="user-activity-box">
+                    <ul>
+                        <li>Profile</li>
+                        <li>Answers</li>
+                        <li>Questions</li>
+                        <li>Posts</li>
+                        <li>Followers</li>
+                        <li>Following</li>
+                    </ul>
                 </Box>
             </Box>
+            
            
             <Box className="user-profile-detail-box">
                 <Box className="user-details-container">

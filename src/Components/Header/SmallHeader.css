@@ -1,0 +1,14 @@
+.s-header-container{
+    @media (min-width: 540px){
+        display: none !important;
+    }
+}
+.logo-search-box{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+.header-tab-box{
+    display: flex;
+    align-items: center;
+}

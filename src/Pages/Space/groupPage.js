@@ -98,7 +98,7 @@ function GroupPage(){
                         ))
                     }
                 </Grid>
-                <Grid xs={4} className="space-product-container">
+                <Grid xs={4} className="space-grp-Adv-container">
                     Advertisement
                 </Grid>
             </Grid>

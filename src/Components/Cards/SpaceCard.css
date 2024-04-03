@@ -1,6 +1,10 @@
 .space-card{
     height: 15rem;
     width: 12rem !important;
+    @media (max-width: 540px){
+       width: 20rem;
+      
+    }
 }
 .space-center-img{
     position: relative !important;

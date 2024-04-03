@@ -25,13 +25,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import { UserContext } from "../../contexts/user-context";
-import { ProductFeeds } from "../../contexts/user-context";
 import { red } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import PostModal from "../../Components/Modal/postModal.js";
-
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -134,7 +132,7 @@ function Header(){
   }
 
   return(
-  <AppBar position="static">
+  <AppBar position="static" className="header-container">
       <Container maxWidth="xl" className="max-ewd-100vw" >
           <Toolbar disableGutters className="header-Box">
               <Box className="logo-image-container">
@@ -212,12 +210,12 @@ function Header(){
               <Button variant="contained" className="Add-qus-btn" onClick={handleModelOpen}>A<span>dd question</span></Button>
             </Box>
             <Modal
-                open={modalOpen}
-                onClose={handleModelClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+              open={modalOpen}
+              onClose={handleModelClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
             >
-                <PostModal handleClose={handleModelClose}/>
+              <PostModal handleClose={handleModelClose}/>
             </Modal>
           </Toolbar>
       </Container>

@@ -2,23 +2,49 @@
 
 .user-container{
     display: flex;
-    margin: 2rem 5rem 0 5rem;
+    margin: 0rem 5rem 0 5rem;
+    @media (max-width: 540px){
+        flex-direction: column;
+        height: 100vh;
+        position:  relative !important;
+        top: 1rem !important;
+    }
+    @media (min-width: 540px){
+        position:  relative !important;
+        top: 5rem !important;
+    }
 }
 
-.user-box{
+.user-profile-container{
     width: 50%;
+   
 }
 
 .user-profile-box{
     display: flex;
     column-gap: 10px;
-    width: 50%;
+    /* width: 50%; */
     border-bottom: 2px solid rgb(239,240,240);
     padding-bottom: 2rem;
 }
 
 .user-name{
     margin: 0 !important;
+}
+.user-activity-box{
+    @media (max-width: 540px){
+        display: none;
+    }
+}
+.user-activity-box ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.user-activity-box ul li{
+    list-style: none !important;
 }
 
 .user-profile-detail-box{

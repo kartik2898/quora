@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {Box,Modal} from '@mui/material';
-import { red } from '@mui/material/colors';
+import { blue, red } from '@mui/material/colors';
 import "./Cards.css"
 import { RxThickArrowUp } from "react-icons/rx";
 import { RxThickArrowDown } from "react-icons/rx";

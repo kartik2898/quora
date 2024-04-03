@@ -3,10 +3,19 @@
     max-width: 100% !important;
     padding: 0 !important;
     background-color: #f1f2f2;
+    @media (min-width: 540px){
+        position:  relative !important;
+        top: 4rem !important;
+    }
 }
 .space-container{
     margin: 0 4rem !important;
     padding: 1rem;
+    @media (max-width: 540px){
+        --Grid-columns: none !important;
+        margin: 0 !important;
+        padding: 0;
+    }
 }
 .space-product-container{
     display: grid;
@@ -34,6 +43,9 @@
     display: grid;
     grid-row-gap: 0.8rem !important;
     text-align: left !important;
+    /* @media (max-width: 540px){
+        text-align: center !important;
+    } */
 }
 .space-card-wrapper{
     display: flex;
@@ -52,4 +64,13 @@
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
+    /* @media (max-width: 540px){
+       justify-content: center;
+    } */
+}
+
+.space-Adv-con{
+    @media (max-width: 540px){
+        display: none;
+    }
 }

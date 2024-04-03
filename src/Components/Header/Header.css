@@ -1,4 +1,10 @@
 
+
+.header-container{
+    @media (max-width: 540px){
+        display: none !important;
+    }
+}
 .header-Box{
     display: flex;
     justify-content: center;

@@ -48,7 +48,7 @@ function SpaceModal({handleClose, getChannel}){
 
     const createChannel=(values)=>{
         var formData = new FormData();
-        formData.append('title',values.spaceName)
+        formData.append('name',values.spaceName)
         formData.append('description',values.description)
         formData.append('images',file)
         postService.createChannel(formData).then((res)=>{

@@ -24,7 +24,9 @@ function Home(){
     // const [nextPage, setNextpage] = useState(true);
     const [selectedFeed, setSelectedFeed] = useState(null)
     const {userDetail,getFeeds,feeds,page,setPage,nextPage} = useContext(UserContext);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true)
+    };
 
     const handleClose = (isDataUpdated=false) => {
         if(isDataUpdated){
@@ -52,6 +54,7 @@ function Home(){
     const fetchMoreData = () => {
         setPage((prev)=>prev+1);
     };
+    
 
     return(
         <Container sx={{ flexGrow: 1 }} className="home-container">
@@ -73,11 +76,11 @@ function Home(){
                             </Box>
                         </Box>
                         <Box className="QNA-option-container">
-                            <Button variant="text" className="btn-signUp" startIcon={<RiQuestionnaireLine fontSize={20}/>}>A<span>sk</span></Button>
+                            <Button variant="text" className="btn-signUp" startIcon={<RiQuestionnaireLine fontSize={20}/>} onClick={handleOpen}>A<span>sk</span></Button>
                             <Divider orientation="vertical" flexItem className="Qna-option-div"/>
                             <Button variant="text" className="btn-signUp" startIcon={<HiOutlinePencilAlt fontSize={20}/>}>A<span>nswer</span></Button>
                             <Divider orientation="vertical" flexItem className="Qna-option-div"/>
-                            <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>} onClick={handleOpen}>P<span>ost</span></Button>
+                            <Button variant="text" className="btn-signUp" startIcon={<RxPencil1 fontSize={20}/>} onClick={()=>handleOpen(true)} >P<span>ost</span></Button>
                         </Box>
                     </Card>
                     <InfiniteScroll

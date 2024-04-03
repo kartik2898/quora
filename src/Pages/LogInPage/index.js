@@ -55,7 +55,6 @@ function LoginPage(){
 
 
     return(
-        <>
             <Container className="login-Layout">
                 <Box className="login-container-wrapper">
                     <Box className="login-logo-container">
@@ -100,7 +99,7 @@ function LoginPage(){
                                     helperText={formik.touched.password && formik.errors.password}
                                 />
                             </Box>
-                           
+            
                             <Box className="frgt-lgn-btn">
                                 <Link href="javascript: void(0)">Forgot Password?</Link>
                                 
@@ -147,7 +146,6 @@ function LoginPage(){
                     </div>
                 </Box>
             </Container>
-        </>
     )
 }
 export default LoginPage

@@ -8,6 +8,9 @@
   width: 50%;
   background-color: white;
   border-radius: 5px;
+  @media (max-width: 540px){
+    width: 90%;
+}
 }
 
 

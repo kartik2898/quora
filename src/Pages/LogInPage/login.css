@@ -26,6 +26,8 @@
 .main-heading{
     font-weight: bold !important;
     color: #636466;
+    padding: 0 0.4rem;
+    
 }
 .form-container-wrapper{
     display: flex;
@@ -34,6 +36,12 @@
     align-items: center;
     padding: 2rem 0;
     max-height: 250px ;
+    @media (max-width: 540px){
+        flex-direction: column-reverse;
+        padding: 0;
+        max-height: max-content;
+        align-items: start;
+    }
 }
 .login-form-container{
     width: 50%;
@@ -42,6 +50,10 @@
     justify-content: center;
     gap: 0.7rem;
     padding: 0.5rem 2rem;
+    @media (max-width: 540px) {
+        width: auto;
+        
+    }
 }
 .frgt-lgn-btn{
     display: flex;
@@ -56,6 +68,11 @@
     justify-content: center;
     row-gap: 0.5rem;
     padding: 0.5rem 2rem;
+    @media (max-width:430px) {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid black;
+        width: auto;
+    }
 }
 
 .TermsAndCondition{
@@ -66,8 +83,6 @@
     width: 17.3rem;
     margin: 1rem 0;
 }
-
-
 
 .gImg{
     height: 35px;
@@ -120,3 +135,4 @@
     justify-content: center;
     padding: 15px;
 }
+

@@ -4,6 +4,10 @@
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100vw !important;
+    @media (min-width: 540px){
+        position:  relative !important;
+        top: 4rem !important;
+    }
 }
 .group-det-container-wrapper{
     /* background-color: rgb(119, 166, 208); */
@@ -15,6 +19,10 @@
 }
 .group-det-container{
     margin: 0 3rem;
+    @media (max-width: 540px){
+        
+        margin: 0 1.2rem;
+    }
     
 }
 .group-cover-img{
@@ -27,6 +35,10 @@
     /* margin: 0 auto !important; */
     left:6rem;
     border-radius: 1.3rem !important;
+    @media (max-width: 540px){
+        top: 16rem;
+        left: 9rem;
+    }
 
 }
 .group-content-container{
@@ -35,11 +47,24 @@
     justify-content: space-between;
     margin-top: 1.7rem;
     margin-left: 1.2rem;
+    @media (max-width: 540px){
+       flex-direction: column;
+       gap: 0.6rem;
+    }
 }
 .space-post-container{
     margin-top: 1rem !important;
-    margin: 1rem 3rem 0rem 3rem !important;
-    width: auto !important;
+    display: flex;
+    justify-content: center;
+    /* margin: 1rem 3rem 0rem 3rem !important; */
+    /* width: auto !important; */
+    
+    @media (min-width: 540px){
+        width: auto !important;
+        margin-top: 1rem !important;
+        margin: 1rem 3rem 0rem 3rem !important;
+    }
+    
 }
 .channelpost-container{
     display: flex;
@@ -56,4 +81,9 @@
     background-color: #E2AF07 !important;
     border-radius: 25px !important;
     padding: 0.5rem 1rem !important;
+}
+.space-grp-Adv-container{
+    @media (max-width: 540px){
+       display: none;
+    }
 }

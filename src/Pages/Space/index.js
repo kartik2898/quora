@@ -75,7 +75,7 @@ function Space(){
                     </Box>
                </Box>
             </Grid>
-            <Grid xs={3}>
+            <Grid xs={3} className="space-Adv-con">
                 Advertisement
             </Grid>
         </Grid>
