@@ -86,6 +86,12 @@
 .add-cmmt-btn{
     border-radius: 20px !important;
     background-color: #2E69FF !important;
+    font-size: small !important;
+    line-height:1.5rem !important;
+    letter-spacing: none !important;
+    @media (max-width: 540px){
+        line-height:normal !important;
+    }
 }
 .cunt-cmt-shr{
     padding: 0.2rem !important;

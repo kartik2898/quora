@@ -96,3 +96,7 @@
 /* .css-x3vexg-MuiGrid2-root{
     --Grid-columns: none !important;
 } */
+.adv-img-container img{
+    height: 350px !important;
+    width: 350px !important;
+}

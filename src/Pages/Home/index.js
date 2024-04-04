@@ -16,6 +16,9 @@ import { useState, useContext } from "react";
 import PostModal from "../../Components/Modal/postModal.js";
 import { UserContext } from '../../contexts/user-context';
 import InfiniteScroll from "react-infinite-scroll-component";
+import adv1 from "../../Assets/Adv1.png"
+import adv2 from "../../Assets/Adv2.png"
+import adv3 from "../../Assets/Adv3.png"
 
 function Home(){
     // const [page,setPage] = useState(0);
@@ -101,7 +104,16 @@ function Home(){
                         }
                     </InfiniteScroll>
                 </Grid>
-                <Grid xs={4} className="Adv-Container"> Advertisement </Grid>
+                <Grid xs={4} className="Adv-Container"> Advertisement
+                    <Box className="adv-img-container">
+                        <img src={adv1}/>
+                        <img src={adv2}/>
+                        <img src={adv3}/>
+                        <img src={adv2}/>
+                        <img src={adv1}/>
+                        <img src={adv3}/>
+                    </Box>
+                 </Grid>
                 
             </Grid>
             <Modal
