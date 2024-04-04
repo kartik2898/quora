@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 import postService from "../../service/PostService";
 import SpaceModal from "../../Components/Modal/spaceModal";
 import InfiniteScroll from "react-infinite-scroll-component";
+import adv1 from "../../Assets/Adv1.png"
+import adv2 from "../../Assets/Adv2.png"
+import adv3 from "../../Assets/Adv3.png"
+
 
 function Space(){
     const [channels, setChannels] = useState([]);
@@ -77,6 +81,14 @@ function Space(){
             </Grid>
             <Grid xs={3} className="space-Adv-con">
                 Advertisement
+                <Box className="adv-img-container">
+                    <img src={adv1}/>
+                    <img src={adv2}/>
+                    <img src={adv3}/>
+                    <img src={adv2}/>
+                    <img src={adv1}/>
+                    <img src={adv3}/>
+                </Box>
             </Grid>
         </Grid>
         <Modal

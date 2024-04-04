@@ -6,6 +6,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import postService from "../../service/PostService";
 import { FaInstagram } from "react-icons/fa6";
+import adv1 from "../../Assets/Adv1.png"
+import adv2 from "../../Assets/Adv2.png"
+import adv3 from "../../Assets/Adv3.png"
+
 
 function GroupPage(){
     const [channelDetail, setChannelDetail] = useState([]);
@@ -100,6 +104,14 @@ function GroupPage(){
                 </Grid>
                 <Grid xs={4} className="space-grp-Adv-container">
                     Advertisement
+                    <Box className="adv-img-container">
+                        <img src={adv1}/>
+                        <img src={adv2}/>
+                        <img src={adv3}/>
+                        <img src={adv2}/>
+                        <img src={adv1}/>
+                        <img src={adv3}/>
+                    </Box>
                 </Grid>
             </Grid>
         </Container>
