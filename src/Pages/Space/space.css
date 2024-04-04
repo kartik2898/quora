@@ -34,6 +34,7 @@
     padding: 1.5rem;
     border-radius: 0.15rem;
     gap: 0.5rem;
+    max-height: 100px;
 }
 .space-btn-container{
     display: flex;

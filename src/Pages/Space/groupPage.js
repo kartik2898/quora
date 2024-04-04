@@ -92,7 +92,7 @@ function GroupPage(){
                     </Box>
             </Box>
             <Grid container spacing={2} className="space-post-container">
-                <Grid xs={8} className="space-product-container">
+                <Grid xs={8.5} className="space-product-container">
                     <Box>Post</Box>
                     {
                         channelPosts.map((post,key)=>(
@@ -102,7 +102,7 @@ function GroupPage(){
                         ))
                     }
                 </Grid>
-                <Grid xs={4} className="space-grp-Adv-container">
+                <Grid xs={3.5} className="space-grp-Adv-container">
                     Advertisement
                     <Box className="adv-img-container">
                         <img src={adv1}/>
