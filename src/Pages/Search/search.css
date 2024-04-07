@@ -6,6 +6,10 @@
     width: 100% !important;
     max-width: 100% !important;
     height: 100%;
+    @media (min-width: 540px){
+        position:  relative !important;
+        top: 4.5rem !important;
+    }
 }
 
 .search-res-wrapper{
