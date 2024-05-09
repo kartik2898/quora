@@ -4,7 +4,6 @@ import postService from "../service/PostService";
 export const UserContext = createContext();
 export const ProductFeeds = createContext();
 
-
 function UserContextProvider({children}){
     const getUserDetail = () => {
        return localStorage.getItem('userDetail') ? JSON.parse(localStorage.getItem('userDetail')) :  null

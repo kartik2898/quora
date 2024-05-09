@@ -68,7 +68,7 @@ function Search(){
                 Search Results
              </Box>
              {
-                searchPost.map((feed,indx)=>(
+                searchPost?.map((feed,indx)=>(
                     <Box className="search-QNA-container" key={indx}>
                         <Box className="search-QNA-box">
                             <Box>

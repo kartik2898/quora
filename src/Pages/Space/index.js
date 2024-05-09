@@ -46,8 +46,7 @@ function Space(){
     };
 
     return(<>
-    <Container className="space-container-wrapper">
-        
+    <Container className="space-container-wrapper">    
         <Grid container spacing={2} className="space-container">
             <Grid xs={9} className="space-product-container">
                <Box className="create-disc-space-card">
