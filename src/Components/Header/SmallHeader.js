@@ -8,7 +8,6 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { GrGroup } from "react-icons/gr";
 import { SlBell } from "react-icons/sl";
 import logo from '../../Assets/quora-logo.png'
-import logo1 from '../../Assets/quora-small-icon.webp'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SearchIcon from '@mui/icons-material/Search';
@@ -172,7 +171,7 @@ function SmallHeader(){
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                         >
-                            <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar>
+                            <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name?.charAt(0).toUpperCase()}</Avatar>
                         </IconButton>
                     </Tooltip>
                 </Box>

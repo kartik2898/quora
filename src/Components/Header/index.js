@@ -181,7 +181,7 @@ function Header(){
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                   >
-                    <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar>
+                    <Avatar sx={{ bgcolor: red[500] }}>{userDetail?.name?.charAt(0).toUpperCase()}</Avatar>
                   </IconButton>
                 </Tooltip>
               </Box>
