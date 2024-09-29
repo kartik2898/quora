@@ -46,7 +46,7 @@ function LoginPage(){
         AuthService.login(values.email, values.password).then((res) => {
             localStorage.setItem('userDetail', JSON.stringify(res?.data?.data))
             localStorage.setItem('token', res?.data?.token)
-            setUserDetail(res.data.data)
+            setUserDetail(res.data.data.user)
             setTimeout(() => {
                 navigate('/home');
             }, 100);

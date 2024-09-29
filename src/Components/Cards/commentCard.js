@@ -39,7 +39,7 @@ function CommentCard({ feed, comments, getComments }) {
             <Box className="comment-container-wrapper">
                 <Box className="comment-box-container">
                     <Avatar sx={{ bgcolor: red[500] }} >
-                        {userDetail?.name.charAt(0).toUpperCase()}
+                        {/* {userDetail?.name?.charAt(0)?.toUpperCase()} */}
                     </Avatar>
                     <Box className="comment-box">
                         <TextField fullWidth size="small" className='cmt-input'

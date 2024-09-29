@@ -30,7 +30,6 @@ function Home(){
     const handleOpen = () => {
         setOpen(true)
     };
-
     const handleClose = (isDataUpdated=false) => {
         if(isDataUpdated){
             setPage(0)
